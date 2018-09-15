@@ -23,11 +23,11 @@ Requires installation of `gitpython` package:
 
 Requires also that the GitHub credentials (username and password) are cached in your computer.
 
-On windows you can do that on command prompt by running (see [help](https://help.github.com/articles/caching-your-github-password-in-git)):
+On **Windows** you can do that on command prompt by running (see [help](https://help.github.com/articles/caching-your-github-password-in-git)):
 
 ```git config --global credential.helper wincred```
 
-On Mac you can do that with credential-osxkeychain:
+On **Mac** you can do that with credential-osxkeychain:
 
 *Check that the tool exists* 
 
@@ -37,7 +37,7 @@ On Mac you can do that with credential-osxkeychain:
 
 ```$ git config --global credential.helper osxkeychain```
 
-On Linux, you can store the credentials for certain time period only:
+On **Linux**, you can store the credentials for certain time period only:
 
 ```git config --global credential.helper 'cache --timeout=3600'```
 
@@ -82,4 +82,16 @@ The tool is managed from [git_tools_conf.py](git_tools_conf.py) file, where you 
 
 ### How to run?
 
-After you have configured 
+This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory, which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored. 
+
+After you have configured everything, you can run the tool from terminal or command prompt. 
+
+Run the tool with command:
+
+```
+$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools
+$ python pull_student_repos.py
+```
+
+
+

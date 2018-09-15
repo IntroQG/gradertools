@@ -11,10 +11,22 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 
 Contents:
 
-- [Requirements](#requirements)
 - [Overview](#overview)
+- [Requirements](#requirements)
 - [Configuration](#configuration)
 - [How to run?](#how-to-run)
+
+### Overview 
+
+[pull_student_repos.py](pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
+It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
+Compliance with NBgrader  requires a few special tricks: 
+
+ - Student repositories will be stored in folder called `submitted`
+ - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
+ - On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
+    - this is okay, it is not needed to push any changes to the repo
+    - if for some reason there is a need to push some changes to that repository, [push_changes_.py]() script can be used to do that (or doing it manually by adding a remote with git commands)
 
 ### Requirements
 
@@ -45,18 +57,6 @@ On **Mac** you can do that with credential-osxkeychain:
 On **Linux**, you can store the credentials for certain time period only:
 
 ```git config --global credential.helper 'cache --timeout=3600'```
-
-### Overview 
-
-[pull_student_repos.py](pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
-It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
-Compliance with NBgrader  requires a few special tricks: 
-
- - Student repositories will be stored in folder called `submitted`
- - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
- - On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
-    - this is okay, it is not needed to push any changes to the repo
-    - if for some reason there is a need to push some changes to that repository, [push_changes_.py]() script can be used to do that (or doing it manually by adding a remote with git commands)
 
 ### Configuration
 

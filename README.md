@@ -2,7 +2,12 @@
 
 This repository contains a few scripts that helps to manage Geo-Python and AutoGIS Exercises.
 
-## Tool for pulling student repositories automatically
+## Contents
+
+- [Automate pulling repos](#automate-pulling-repos)
+- [Send feedback to Slack automatically (TODO)]()
+
+## Automate pulling repos
 
 Contents:
 
@@ -77,7 +82,7 @@ The tool is managed from [git_tools_conf.py](git_tools_conf.py) file, where you 
   extra_repos = [] 
 
   # Convert GitHub repository name to format supported by NBgrader (True | False)
-    use_nbgrader_style = True
+  use_nbgrader_style = True
 ```  
 
 ### How to run?

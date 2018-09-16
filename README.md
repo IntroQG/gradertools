@@ -160,11 +160,32 @@ that automates the process. What this tools does:
  - It collects all separate feedback html files (one for each problem), and merges them together so that we can share only 1 html with students (instead of multiple)
  - It generates pdf-report from that merged html-files that can be easily shared with students in Slack (this is automized as well, next step)
 
+### Requirements
+
+This tool requires following packages:
+
+ - nbgrader:
+
+    - `conda install -c conda-forge nbgrader`
+
+ - jinja:
+
+    - `conda install -c conda-forge jinja2`
+
+ - python-pdfkit package:
+
+    - Windows:
+
+       - `pip install pdfkit`
+       - You also need to install *Wkhtmltppdf* package before pdfkit starts working (complicated, but let's live with this for now):
+          - [download page](https://wkhtmltopdf.org/downloads.html)
+          - After installing *wkhtmltopdf*, you need to add the `bin/` folder to system environment path (ask help if you don't know how)
+
 ### How to use the tool?
 
 It is straightforward. All you need to do is to configure the tool from [git_tools_conf.py](git_tools_conf.py).
 It uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
-There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building:
+There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building (if pdfkit does not work, you might want to disable this):
 
 ```python
 # Generate pdf from the feedback (True or False)

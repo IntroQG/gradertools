@@ -36,3 +36,6 @@ extra_repos = []
 
 # Convert GitHub repository name to format supported by NBgrader
 use_nbgrader_style = True
+
+# Generate pdf from the feedback
+generate_pdf = True

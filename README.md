@@ -104,7 +104,13 @@ $ python pull_student_repos.py
 
 ## Grading student assignments
 
-Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc. 
+Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc.
+
+### Requirements
+
+This part requires nbgrader to be installed:
+
+ - `$ conda install -c conda-forge nbgrader`
 
 ### Grade assignments automatically
 

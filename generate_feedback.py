@@ -128,15 +128,12 @@ def main(base_folder, user_names, exercise_list, generate_pdf):
     # Generate the feedback html files 
     for exercise_num in exercise_list:
         
-        # Generate feedback (returns folder where the feedback is formed)
+        # Generate feedback 
         generate_feedback(base_folder, exercise_num)
         
         # Merge feedback html files 
         for user in user_names:
-            
-            # Generate feedback (returns folder where the feedback is formed)
-            generate_feedback(base_folder, exercise_num)
-            
+
             # Get the filepaths for feedback html files
             files = get_user_feedback_files(base_folder, exercise_num, user)
             

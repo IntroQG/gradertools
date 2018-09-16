@@ -165,7 +165,7 @@ that automates the process. What this tools does:
 
  - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
  - It collects all separate feedback html files (one for each problem), and merges them together so that we can share only 1 html with students (instead of multiple)
- - It generates pdf-report from that merged html-files that can be easily shared with students in Slack (this is automized as well, next step)
+ - It generates pdf-report from that merged html-files that can be easily shared with students in Slack 
 
 ### Requirements
 

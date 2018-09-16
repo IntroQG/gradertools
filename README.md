@@ -6,6 +6,8 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 
 - [Automate pulling repos](#automate-pulling-repos)
 - [Generate feedback for students]()
+  - [Autograde assignments](#grade-assignments-automatically)
+  - [Grade assignment manually / modify credits from autograding](#grade-assignments-manually-or-modify-given-credits)
 - [Send feedback to Slack automatically (TODO)]()
 
 ## Automate pulling repos
@@ -103,7 +105,7 @@ $ python pull_student_repos.py
 
 Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc. 
 
-### How to use nbgrader automating grading?
+### Grade assignments automatically
 
 1. From the nbgrader dashboard you will see the number of submissions (see below), and pressing that number, you will be directed to a new page where you can do the autograding for all the submissions by pressing the "lightning" -button
 
@@ -115,9 +117,49 @@ Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can 
     
 ![](https://nbgrader.readthedocs.io/en/stable/_images/manage_submissions1.png)
 
-3. Typically Exercises also contain cells that require manual grading
+### Grade assignments manually or modify given credits
 
-3. Once you have done grading, it is time to give automatically feedback for the students. This can be done from command prompt with following command, in this case for Exercise-3 (you need to navigate to the root folder of your nbgrader directory):
+Typically exercises also contain cells that require manual grading, or there might be situations
+where you need to add comments to the students answers or code, or modify the points given by the
+automatic grading system. Luckily, this is easy to do with nbgrader.
+
+1. Typically you can see from Nbgrader dashboard information that the assignment requires manual grading:
+
+![](img/manual-grading-needed.png)
+
+2. If the exercise requires manual grading, you can do that by opening the **Manual Grading** -tab:
+
+![](img/manual-grading-button.png)
+
+3. On the following page you can see the overview of the assignments and there should also be a symbol indicating which of the
+problems need manual grading (we always ask questions, so do check.). Click the link for each problem:
+
+![](img/manual-grading-overview.png)
+
+4. On the following page, you will see the current credits of that specific problem. Click the `Submission` button to start manual grading:
+
+![](img/manual-grade-submission.png)
+
+5. After this, you will land to the manual grading page, where you can manually modify credits for each task, and add comments for students codes. Giving feedback for students is important!:
+
+![](img/change-autograding.png)
+
+6. There are also sections that cannot be automatically graded, such as written answers to our questions. Those you need to assess yourself and give credits according the grading criteria (discuss with instructors):
+
+![](img/grade-manually.png)
+
+That's it! This is the basic workflow for grading the students exercises with nbgrader. "Enjoy!" :P
+
+
+
+
+
+
+
+
+## Generate feedback reports
+
+Once you have done grading, it is time to give automatically feedback for the students. This can be done from command prompt with following command, in this case for Exercise-3 (you need to navigate to the root folder of your nbgrader directory):
 
    ``` $ nbgrader feedback "Exercise-3"```
    

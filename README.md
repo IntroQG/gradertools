@@ -150,19 +150,28 @@ problems need manual grading (we always ask questions, so do check.). Click the 
 
 That's it! This is the basic workflow for grading the students exercises with nbgrader. "Enjoy!" :P
 
-
-
-
-
-
-
-
 ## Generate feedback reports
 
-Once you have done grading, it is time to give automatically feedback for the students. This can be done from command prompt with following command, in this case for Exercise-3 (you need to navigate to the root folder of your nbgrader directory):
+Once you have done grading, it is time to generate feedback reports for the students.
+For this purpose, we have a dedicated tool [generate_feedback.py](generate_feedback.py)
+that automates the process. What this tools does:
 
-   ``` $ nbgrader feedback "Exercise-3"```
-   
-   - This will create HTML files for all the student assignments and gradings into a folder `feedback`. 
+ - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
+ - It collects all separate feedback html files (one for each problem), and merges them together so that we can share only 1 html with students (instead of multiple)
+ - It generates pdf-report from that merged html-files that can be easily shared with students in Slack (this is automized as well, next step)
+
+### How to use the tool?
+
+It is straightforward. All you need to do is to configure the tool from [git_tools_conf.py](git_tools_conf.py).
+It uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
+There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building:
+
+```python
+# Generate pdf from the feedback (True or False)
+generate_pdf = True
+```
+
+
+
 
 

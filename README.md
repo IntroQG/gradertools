@@ -5,6 +5,7 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 ## Contents
 
 - [Automate pulling repos](#automate-pulling-repos)
+- [Generate feedback for students]()
 - [Send feedback to Slack automatically (TODO)]()
 
 ## Automate pulling repos
@@ -98,5 +99,28 @@ $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools
 $ python pull_student_repos.py
 ```
 
+## Generate feedback for students
+
+Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc. 
+
+### How to use nbgrader automating grading?
+
+1. From the nbgrader dashboard you will see the number of submissions (see below), and pressing that number, you will be directed to a new page where you can do the autograding for all the submissions by pressing the "lightning" -button
+
+![](https://nbgrader.readthedocs.io/en/stable/_images/manage_assignments4.png)
+
+2. Once you have clicked the 'autograding' button (below), nbgrader will automatically grade the exercise, and it will create a new version of the students notebook submission under `autograded` folder. E.g. `../autograded/htenkanen/Exercise-3/Exercise-3.ipynb`
+
+    - nbgrader will also automatically collect all the exercise points of the students into a database, so you don't need to do this manually
+    
+![](https://nbgrader.readthedocs.io/en/stable/_images/manage_submissions1.png)
+
+3. Typically Exercises also contain cells that require manual grading
+
+3. Once you have done grading, it is time to give automatically feedback for the students. This can be done from command prompt with following command, in this case for Exercise-3 (you need to navigate to the root folder of your nbgrader directory):
+
+   ``` $ nbgrader feedback "Exercise-3"```
+   
+   - This will create HTML files for all the student assignments and gradings into a folder `feedback`. 
 
 

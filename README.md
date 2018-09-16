@@ -5,9 +5,10 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 ## Contents
 
 - [Automate pulling repos](#automate-pulling-repos)
-- [Generate feedback for students]()
+- [Grade student assignments](#grading-student-assignments)
   - [Autograde assignments](#grade-assignments-automatically)
   - [Grade assignment manually / modify credits from autograding](#grade-assignments-manually-or-modify-given-credits)
+- [Generate feedback reports](#generate-feedback-reports)
 - [Send feedback to Slack automatically (TODO)]()
 
 ## Automate pulling repos
@@ -101,7 +102,7 @@ $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools
 $ python pull_student_repos.py
 ```
 
-## Generate feedback for students
+## Grading student assignments
 
 Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc. 
 
@@ -168,7 +169,7 @@ This tool requires following packages:
 
     - `conda install -c conda-forge nbgrader`
 
- - jinja:
+ - jinja2 (merges html files), should come with Anaconda but if not, install:
 
     - `conda install -c conda-forge jinja2`
 

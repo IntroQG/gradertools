@@ -158,6 +158,10 @@ $ jupyter notebook
 
 ### Grade assignments automatically
 
+0. Open nbgrader tab:
+
+![](https://nbgrader.readthedocs.io/en/stable/_images/formgrader_tab.png)
+
 1. From the nbgrader dashboard you will see the number of submissions (see below), and pressing that number, you will be directed to a new page where you can do the autograding for all the submissions by pressing the "lightning" -button
 
 ![](https://nbgrader.readthedocs.io/en/stable/_images/manage_assignments4.png)

@@ -70,6 +70,21 @@ def create_submitted_folder(base_f):
         os.mkdir(submitted_f)
     return submitted_f
 
+def create_source_exercise_folder(base_f, exercise_num):
+    """Creates a submitted folder if it does not exist."""
+    # Source
+    source_f = os.path.join(base_f, "source")
+    exercise_f = os.path.join(source_f, "Exercise-%s" % exercise_num)
+    
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(source_f):
+        os.mkdir(source_f)
+        
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(exercise_f):
+        os.mkdir(exercise_f)
+    return (source_f, exercise_f)
+
 def rename_directory_for_nbgrader(repo_path, exercise_number):
     """Renames the GitHub Classroom directory name to format supported by NBgrader"""
     new_name = os.path.join(os.path.dirname(repo_path), "Exercise-%s" % exercise_number)
@@ -109,6 +124,9 @@ def main():
                 
                 # Create submitted folder if it does not exist
                 submitted_f = create_submitted_folder(base_folder)
+                
+                # Create empty source folder for Exercise so that nbgrader recognizes the submissions
+                create_source_exercise_folder(base_folder, enumber)
                 
                 # Parse user directory and create it if it does not exist
                 student_f = create_student_folder(submitted_f, uname)

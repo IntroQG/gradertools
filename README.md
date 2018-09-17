@@ -71,11 +71,11 @@ After you have created that folder, go into it in terminal or command line and *
 
     - `$ jupyter nbextension enable --sys-prefix --py nbgrader`
 
- - After this, Nbgrader extension opens alway when you launch Jupyter Notebook. (Launching the Jupyter Notebook will also initialize grading database (`gradebook.db`), and a log file (`.nbgrader.log`), **do not delete these at any point!**):
+ - After this, Nbgrader extension opens always when you launch Jupyter Notebook. (Launching the Jupyter Notebook will also initialize grading database (`gradebook.db`), and a log file (`.nbgrader.log`), **do not delete these at any point!**):
 
     - `$ jupyter notebook`
 
- - When you have launched the nbgrader and the notebook for the first time, and they work. That is all you need to do at this point.
+ - When you have launched the nbgrader and the notebook for the first time, and they seem to be working (no errors), that is all you need to do at this point.
 
 After you **need to clone this `tools` repository** into the base folder (not necessary but useful):
 

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-slack_message_bot.py
+get_slack_users.py
 
-Send messages to Slack workspace as user automatically.
+Script to collect user information from Slack users in the workspace. 
+Needed for automatic communication between teachers and students.
+Uses Slack API. 
 
 Created on Fri Sep 14 20:24:39 2018
 

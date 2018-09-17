@@ -165,7 +165,7 @@ that automates the process. What this tools does:
 
  - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
  - It collects all separate feedback html files (one for each problem), and merges them together so that we can share only 1 html with students (instead of multiple)
- - It generates pdf-report from that merged html-files that can be easily shared with students in Slack 
+ - It generates pdf-report from that merged html-files that can be easily shared with students in Slack
 
 ### Requirements
 
@@ -197,6 +197,70 @@ There is one parameter in the configuration file that is relevant for this tool,
 ```python
 # Generate pdf from the feedback (True or False)
 generate_pdf = True
+```
+
+## Send feedback reports to students in Slack
+
+Final step after grading and generating the feedback reports, is to share those reports to students.
+This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
+via that as Slack is providing an API that fits nicely for this purpose!
+
+[send_feedback.py](send_feedback.py) script will automate the sending of feedbacks.
+Again we control this process from configuration files as demonstrated below.
+
+### Configuring Slack
+
+Before you can start to use the tool, you need to create **`slack_conf.py`** configuration file in the same folder where **send_feedback.py** file is located. The file should contain the token for Slack API that makes it possible
+to send messages automatically. You need to add the token to that file (ask the token from Henrikki), edit the file in following way:
+
+```python
+"""
+slack_conf.py
+Configuration file for Slack API.
+"""
+
+slack_token = "ReplaceThisWithCorrectSlackToken"
+```
+
+### Configuring the feedback sending procedures
+
+There are a few parameters in configuration file and
+one CSV-file ([data/Geopy_Autogis_students_with_Slack_info.csv](data/Geopy_Autogis_students_with_Slack_info.csv)) that are crucial for this tool to work.
+The CSV-file contains information about the students GitHub usernames, and their Slack-userid's etc,
+that are needed communicate to students.
+You can configure the parameters from the [git_tools_conf.py](git_tools_conf.py) as shown below (example).
+
+```
+# ===============================
+# Exercise / Classroom parameters
+# ===============================
+
+# Inspector (the GitHub username of assistant/instructor)
+inspector_user_name = 'htenkanen'
+
+# ===================
+# Feedback parameters
+# ===================
+
+# Send feedback to Slack (True / False)
+send_to_slack = True
+
+# Send feedback to GitHub (True / False)
+send_to_github = True
+
+# ===============================
+# Student information parameters
+# ===============================
+
+# File containing the student info (e.g. Slack info + GitHub usernames)
+student_info_file = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools\data\Geopy_Autogis_students_with_Slack_info.csv"
+
+# Required column names
+github_username_column = 'Githubname'
+name_column = 'Name'
+slack_id_column = 'id'
+slack_display_name_column = 'display_name'
+
 ```
 
 

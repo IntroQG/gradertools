@@ -199,6 +199,10 @@ There is one parameter in the configuration file that is relevant for this tool,
 generate_pdf = True
 ```
 
+After configuring you can run the tool from command line (you need to be in the directory where the Python file is located):
+
+``` $ python generate_feedback.py```
+
 ## Send feedback reports to students in Slack
 
 Final step after grading and generating the feedback reports, is to share those reports to students.
@@ -263,6 +267,11 @@ slack_display_name_column = 'display_name'
 
 ```
 
+### How to run the tool?
+
+After configuring you can run the tool from command line (you need to be in the directory where the Python file is located):
+
+``` $ python send_feedback.py```
 
 
 

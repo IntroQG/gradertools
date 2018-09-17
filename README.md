@@ -4,23 +4,55 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 
 ## Contents
 
+- [Requirements](#requirements)
 - [Automate pulling repos](#automate-pulling-repos)
 - [Grade student assignments](#grading-student-assignments)
   - [Autograde assignments](#grade-assignments-automatically)
   - [Grade assignment manually / modify credits from autograding](#grade-assignments-manually-or-modify-given-credits)
 - [Generate feedback reports](#generate-feedback-reports)
-- [Send feedback to Slack automatically (TODO)]()
+- [Send feedback to Slack automatically](#send-feedback-reports-to-students-in-slack)
+
+## Requirements
+
+These tools requires a few packages that needs to be installed before using them
+
+ - [**gitpython**](https://gitpython.readthedocs.io/en/stable/) package:
+
+    - ```$ conda install -c conda-forge gitpython```
+
+ - [**nbgrader**](https://nbgrader.readthedocs.io/en/stable/) is essential for automatic grading and you can install it with conda:
+
+    - `$ conda install -c conda-forge nbgrader`
+
+ - [**slackclient](https://slackapi.github.io/python-slackclient/) is essential for sending feedback automatically via Slack:
+
+    - `$ conda install -c conda-forge slackclient`
+
+ -  jinja2 (merges html files), should come with Anaconda but if not, install:
+
+    - `conda install -c conda-forge jinja2`
+
+ - python-pdfkit package:
+
+    - Windows:
+
+       - `pip install pdfkit` (conda version has some conflicts at least for me)
+       - You also need to install *Wkhtmltppdf* package before pdfkit starts working (complicated, but let's live with this for now):
+          - [download page](https://wkhtmltopdf.org/downloads.html)
+          - After installing *wkhtmltopdf*, you need to add the `bin/` folder to system environment path (ask help if you don't know how)
+
+    - Mac / Linux (not tested)
+
+        - `conda install -c conda-forge python-pdfkit`
+
+### Cache your GitHub credentials
+
+These tools also require that the GitHub credentials (username and password) are cached in your computer.
+See directions how to do that from [here](cache_git_credentials.MD)
 
 ## Automate pulling repos
 
-Contents:
-
-- [Overview](#overview)
-- [Requirements](#requirements)
-- [Configuration](#configuration)
-- [How to run?](#how-to-run)
-
-### Overview 
+### Overview
 
 [pull_student_repos.py](pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
 It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
@@ -31,36 +63,6 @@ Compliance with NBgrader  requires a few special tricks:
  - On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
     - this is okay, it is not needed to push any changes to the repo
     - if for some reason there is a need to push some changes to that repository, [push_changes_.py]() script can be used to do that (or doing it manually by adding a remote with git commands)
-
-### Requirements
-
-#### gitpython -package
-
-Requires installation of `gitpython` package:
-
-```$ conda install -c conda-forge gitpython```
-
-#### Cache your GitHub credentials
-
-Requires also that the GitHub credentials (username and password) are cached in your computer.
-
-On **Windows** you can do that on command prompt by running (see [help](https://help.github.com/articles/caching-your-github-password-in-git)):
-
-```git config --global credential.helper wincred```
-
-On **Mac** you can do that with credential-osxkeychain:
-
-*Check that the tool exists* 
-
-```$ git credential-osxkeychain```
-
-*Cache your credentials*
-
-```$ git config --global credential.helper osxkeychain```
-
-On **Linux**, you can store the credentials for certain time period only:
-
-```git config --global credential.helper 'cache --timeout=3600'```
 
 ### Configuration
 
@@ -105,12 +107,6 @@ $ python pull_student_repos.py
 ## Grading student assignments
 
 Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc.
-
-### Requirements
-
-This part requires nbgrader to be installed:
-
- - `$ conda install -c conda-forge nbgrader`
 
 ### Grade assignments automatically
 
@@ -166,27 +162,6 @@ that automates the process. What this tools does:
  - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
  - It collects all separate feedback html files (one for each problem), and merges them together so that we can share only 1 html with students (instead of multiple)
  - It generates pdf-report from that merged html-files that can be easily shared with students in Slack
-
-### Requirements
-
-This tool requires following packages:
-
- - nbgrader:
-
-    - `conda install -c conda-forge nbgrader`
-
- - jinja2 (merges html files), should come with Anaconda but if not, install:
-
-    - `conda install -c conda-forge jinja2`
-
- - python-pdfkit package:
-
-    - Windows:
-
-       - `pip install pdfkit`
-       - You also need to install *Wkhtmltppdf* package before pdfkit starts working (complicated, but let's live with this for now):
-          - [download page](https://wkhtmltopdf.org/downloads.html)
-          - After installing *wkhtmltopdf*, you need to add the `bin/` folder to system environment path (ask help if you don't know how)
 
 ### How to use the tool?
 

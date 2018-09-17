@@ -26,11 +26,12 @@ def generate_slack_user_dataframe(users):
         team_id = user['team_id']
         name = user['name']
         real_name = user['real_name']
+        display_name = user['profile']['display_name']
         
-        df = df.append([[id, team_id, name, real_name]], ignore_index=True)
+        df = df.append([[id, team_id, name, real_name, display_name]], ignore_index=True)
         
     # Set columns
-    cols = ['id', 'team_id', 'name', 'real_name']
+    cols = ['id', 'team_id', 'name', 'real_name', 'display_name']
     df.columns = cols
     return df
 
@@ -42,5 +43,7 @@ users = get_workspace_users(sc)
 # Generate DataFrame
 df = generate_slack_user_dataframe(users)
 
-
+# Save
+outfp = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools\data\Geopy_Autogis_students_with_Slack_info.csv"
+df.to_csv(outfp, index=False, encoding='latin1')
 

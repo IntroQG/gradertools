@@ -14,7 +14,14 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 
 ## Requirements
 
-These tools requires a few packages that needs to be installed before using them
+### Cache your GitHub credentials
+
+These tools require that the GitHub credentials (username and password) are cached in your computer.
+See directions how to do that from [here](cache_git_credentials.MD).
+
+### Install packages.
+
+The tools requires a few packages that needs to be installed before using them.
 
  - [**gitpython**](https://gitpython.readthedocs.io/en/stable/) package:
 
@@ -44,11 +51,6 @@ These tools requires a few packages that needs to be installed before using them
     - Mac / Linux (not tested)
 
         - `conda install -c conda-forge python-pdfkit`
-
-### Cache your GitHub credentials
-
-These tools also require that the GitHub credentials (username and password) are cached in your computer.
-See directions how to do that from [here](cache_git_credentials.MD)
 
 ## Automate pulling repos
 

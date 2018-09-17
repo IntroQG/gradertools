@@ -29,7 +29,7 @@ Created on Sat Sep 15 21:45:53 2018
 """
 import os
 import subprocess
-from git_tools_conf import base_folder, user_names, exercise_list, generate_pdf
+from tools_conf import base_folder, user_names, exercise_list, generate_pdf
 import glob
 import shutil
 from jinja2 import Environment, PackageLoader, Template

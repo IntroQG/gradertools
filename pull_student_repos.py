@@ -26,7 +26,7 @@ Created on Wed Jan 11 13:55:44 2017
 from git import Repo
 import os
 from sys import platform
-from git_tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style
+from tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style
 
 def create_remote(repo, github_remote_url):
     """Creates a remote to specified url."""

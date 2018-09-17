@@ -17,8 +17,8 @@ import time
 # ===========================================
 # Get parameters from the configuration files
 # ===========================================
-from git_tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
-from git_tools_conf import user_names, exercise_list
+from tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
+from tools_conf import user_names, exercise_list
 from slack_conf import slack_token
 
 def main():

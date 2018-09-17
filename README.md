@@ -5,6 +5,7 @@ This repository contains a few scripts that helps to manage Geo-Python and AutoG
 ## Contents
 
 - [Requirements](#requirements)
+- [Setting up things for the first time](#setting-up-things-for-the-first-time)
 - [Automate pulling repos](#automate-pulling-repos)
 - [Grade student assignments](#grading-student-assignments)
   - [Autograde assignments](#grade-assignments-automatically)
@@ -51,6 +52,41 @@ The tools requires a few packages that needs to be installed before using them.
     - Mac / Linux (not tested)
 
         - `conda install -c conda-forge python-pdfkit`
+
+## Setting up things for the first time
+
+When doing this for the first time, you basically need to create a root folder where all the course assignments,
+feedbacks etc. will be collected.
+
+This can be for example (as set in these scripts):
+
+ ```
+ # Base folder
+ C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+ ```
+
+After you have created that folder, go into it in terminal or command line and **start the nbgrader for the first time** to set things up:
+
+ - Configure in a way that nbgrader extension launches every time you open Jupyter Notebook:
+
+    - `$ jupyter nbextension enable --sys-prefix --py nbgrader`
+
+ - After this, Nbgrader extension opens alway when you launch Jupyter Notebook. (Launching the Jupyter Notebook will also initialize grading database (`gradebook.db`), and a log file (`.nbgrader.log`), **do not delete these at any point!**):
+
+    - `$ jupyter notebook`
+
+ - When you have launched the nbgrader and the notebook for the first time, and they work. That is all you need to do at this point.
+
+After you **need to clone this `tools` repository** into the base folder (not necessary but useful):
+
+ ```
+ $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+
+ $ git clone https://github.com/geo-python/tools
+
+ ```
+
+After this, you are ready to start using the tools below (separate instructions for each of them).
 
 ## Automate pulling repos
 

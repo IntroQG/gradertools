@@ -104,7 +104,7 @@ Compliance with NBgrader  requires a few special tricks:
 
 ### Configuration
 
-The tool is managed from [git_tools_conf.py](git_tools_conf.py) file, where you can specify all the required parameters, such as:
+The tool is managed from [tools_conf.py](tools_conf.py) file, where you can specify all the required parameters, such as:
 
 ```python
   # Base folder where repositories will be collected
@@ -131,7 +131,7 @@ The tool is managed from [git_tools_conf.py](git_tools_conf.py) file, where you 
 
 ### How to run?
 
-This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [git_tools_conf.py](git_tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored. 
+This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [tools_conf.py](tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
 
 After you have configured everything, you can run the tool from terminal or command prompt. 
 
@@ -203,7 +203,7 @@ that automates the process. What this tools does:
 
 ### How to use the tool?
 
-It is straightforward. All you need to do is to configure the tool from [git_tools_conf.py](git_tools_conf.py).
+It is straightforward. All you need to do is to configure the tool from [tools_conf.py](tools_conf.py).
 It uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
 There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building (if pdfkit does not work, you might want to disable this):
 
@@ -245,7 +245,7 @@ There are a few parameters in configuration file and
 one CSV-file ([data/Geopy_Autogis_students_with_Slack_info.csv](data/Geopy_Autogis_students_with_Slack_info.csv)) that are crucial for this tool to work.
 The CSV-file contains information about the students GitHub usernames, and their Slack-userid's etc,
 that are needed communicate to students.
-You can configure the parameters from the [git_tools_conf.py](git_tools_conf.py) as shown below (example).
+You can configure the parameters from the [tools_conf.py](tools_conf.py) as shown below (example).
 
 ```
 # ===============================

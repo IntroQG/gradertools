@@ -12,8 +12,8 @@ Created on Sat Sep 15 19:57:24 2018
 
 @author: Henrikki Tenkanen
 """
-from tools.tools_conf import base_folder
-from tools.get_students_of_assistant import get_course_students
+from gradertools.config.tools_conf import base_folder, organization
+from gradertools.config.get_students_of_assistant import get_course_students
 
 c = get_config()
 
@@ -23,7 +23,7 @@ c = get_config()
 
 # You only need this if you are running nbgrader on a shared
 # server set up.
-c.Exchange.course_id = "Geo-Python"
+c.Exchange.course_id = organization
 
 ## The root directory for the course files (that includes the `source`,
 #  `release`, `submitted`, `autograded`, etc. directories). Defaults to the

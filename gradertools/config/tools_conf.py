@@ -26,13 +26,16 @@ Created on Sat Sep 15 19:57:24 2018
 # ===============================
 
 # Inspector (the GitHub username of assistant/instructor)
-inspector_user_name = 'htenkanen'
+inspector_user_name = 'VuokkoH'
 
 # Organization
 organization = "Geo-Python-2018"
 
+# Suffix for source repository for autograded Exercises
+autograding_suffix = "-autograding"
+
 # List of GitHub usernames that should be pulled
-user_names = ['htenkanen']
+user_names = ['htenkanen', 'VuokkoH']
     
 # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
 exercise_list = [3]
@@ -76,5 +79,7 @@ student_info_file = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-201
 # Required column names
 github_username_column = 'Githubname'
 name_column = 'Name'
+real_name_column = 'real_name'
+assistant_column = 'Assistant'
 slack_id_column = 'id'
 slack_display_name_column = 'display_name'

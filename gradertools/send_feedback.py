@@ -17,9 +17,9 @@ import time
 # ===========================================
 # Get parameters from the configuration files
 # ===========================================
-from tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
-from tools_conf import user_names, exercise_list
-from slack_conf import slack_token
+from config.tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
+from config.tools_conf import user_names, exercise_list
+from config.slack_conf import slack_token
 
 def main():
     
@@ -79,7 +79,7 @@ def send_feedbacks(sc, student_df, user_names, exercises):
 def read_student_info(student_info):
     """Reads student informatin from CSV file specified in configuration file."""
     try:
-        students = pd.read_csv(student_info, encoding='latin1')
+        students = pd.read_csv(student_info)
     except:
         raise ValueError("Could not read the student information!\nEnsure that you have specified in the configuration file the filepath to the CSV-file including this information.\nEnsure also that the csv-file is comma-separated (',')")
     return students    

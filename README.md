@@ -75,19 +75,17 @@ When you have created the base folder for your exercises, you **need to clone th
  ```
 
 
-After you have created that folder, go into it in terminal or command line and **start the nbgrader for the first time** to set things up:
+After you have created that folder, go into it in terminal or command line and **initilize the nbgrader for the first time** by running [init_gradertools.py](init_gradertools.py) (you only need to do this once when using the environment for the very first time!):
 
- - Configure in a way that nbgrader extension launches every time you open Jupyter Notebook:
+ ```bash
+ $ cd gradertools
+ $ python init_gradertools.py
+ ```
 
-    - `$ jupyter nbextension enable --sys-prefix --py nbgrader`
+This will run some tests and initialize your grading environment. If everything is okay, the program will say that you are good to go,
+otherwise it will give you hints about what you need to do, to get things working. You need to do this step only once.
 
- - After this, Nbgrader extension opens always when you launch Jupyter Notebook. (Launching the Jupyter Notebook will also initialize grading database (`gradebook.db`), and a log file (`.nbgrader.log`), **do not delete these at any point!**):
-
-    - `$ jupyter notebook`
-
- - When you have launched the nbgrader and the notebook for the first time, and they seem to be working (no errors), that is all you need to do at this point.
-
-After this, you are ready to start using the tools below (separate instructions for each of them).
+After this initiliazing step, you are ready to start using the tools below (separate instructions for each of them).
 
 ## Automate pulling repos
 
@@ -95,7 +93,7 @@ After this, you are ready to start using the tools below (separate instructions 
 
 [pull_student_repos.py](pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
 It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
-Compliance with NBgrader  requires a few special tricks: 
+Compliance with NBgrader  requires a few special tricks (done automatically by the tool):
 
  - Student repositories will be stored in folder called `submitted`
  - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
@@ -105,14 +103,15 @@ Compliance with NBgrader  requires a few special tricks:
 
 ### Configuration
 
-The tool is managed from [tools_conf.py](tools_conf.py) file, where you can specify all the required parameters, such as:
+The tool is managed from [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py) file, where you can specify all the required parameters, such as:
 
 ```python
-  # Base folder where repositories will be collected
-  base_folder = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018"
 
-  # Organization
+  # GitHub Organization where the exercises will be stored
   organization = "Geo-Python-2018"
+
+  # Suffix for source repository for autograded Exercises
+  autograding_suffix = "-autograding"
 
   # List of GitHub usernames that should be pulled (e.g. ['htenkanen', 'VuokkoH', 'davewhipp']
   user_names = ['htenkanen']
@@ -128,18 +127,21 @@ The tool is managed from [tools_conf.py](tools_conf.py) file, where you can spec
 
   # Convert GitHub repository name to format supported by NBgrader (True | False)
   use_nbgrader_style = True
+
+  # Generate pdf from the feedback
+  generate_pdf = True
 ```  
 
 ### How to run?
 
 This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [tools_conf.py](tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
 
-After you have configured everything, you can run the tool from terminal or command prompt. 
+After you have configured everything (see above), you can run the tool from terminal or command prompt.
 
 Run the tool with command:
 
 ```
-$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools
+$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\gradertools\gradertools
 $ python pull_student_repos.py
 ```
 
@@ -152,7 +154,7 @@ Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can 
 You can start nbgrader from command line. You should first navigate to the base-folder that you defined in the [initial step above](#setting-up-things-for-the-first-time).
 
 ```
-$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools
+$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\gradertools
 
 $ jupyter notebook
 ```
@@ -209,7 +211,7 @@ That's it! This is the basic workflow for grading the students exercises with nb
 ## Generate feedback reports
 
 Once you have done grading, it is time to generate feedback reports for the students.
-For this purpose, we have a dedicated tool [generate_feedback.py](generate_feedback.py)
+For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](gradertools/generate_feedback.py)
 that automates the process. What this tools does:
 
  - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
@@ -218,8 +220,9 @@ that automates the process. What this tools does:
 
 ### How to use the tool?
 
-It is straightforward. All you need to do is to configure the tool from [tools_conf.py](tools_conf.py).
-It uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
+It is straightforward.
+The tool uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
+If you still need to do some changes you can configure this from [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py).
 There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building (if pdfkit does not work, you might want to disable this):
 
 ```python
@@ -229,7 +232,9 @@ generate_pdf = True
 
 After configuring you can run the tool from command line (you need to be in the directory where the Python file is located):
 
-``` $ python generate_feedback.py```
+```bash
+$ python generate_feedback.py
+```
 
 ## Send feedback reports to students in Slack
 
@@ -237,7 +242,7 @@ Final step after grading and generating the feedback reports, is to share those 
 This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
 via that as Slack is providing an API that fits nicely for this purpose!
 
-[send_feedback.py](send_feedback.py) script will automate the sending of feedbacks.
+[gradertools/send_feedback.py](gradertools/send_feedback.py) script will automate the sending of feedbacks.
 Again we control this process from configuration files as demonstrated below.
 
 ### Configuring Slack
@@ -260,7 +265,7 @@ There are a few parameters in configuration file and
 one CSV-file ([data/Geopy_Autogis_students_with_Slack_info.csv](data/Geopy_Autogis_students_with_Slack_info.csv)) that are crucial for this tool to work.
 The CSV-file contains information about the students GitHub usernames, and their Slack-userid's etc,
 that are needed communicate to students.
-You can configure the parameters from the [tools_conf.py](tools_conf.py) as shown below (example).
+You can configure the parameters from the [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py) as shown below (example).
 
 ```
 # ===============================
@@ -285,7 +290,11 @@ send_to_github = True
 # ===============================
 
 # File containing the student info (e.g. Slack info + GitHub usernames)
-student_info_file = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools\data\Geopy_Autogis_students_with_Slack_info.csv"
+student_info_filename = "Geopy_Autogis_students_with_Slack_info.csv"
+
+# You can manually specify path to 'student_info_file' below if needed. The 'gradertools/data' -folder is the default location for student information
+data_dir = get_data_directory_path()
+student_info_file = os.path.join(data_dir, student_info_filename)
 
 # Required column names
 github_username_column = 'Githubname'

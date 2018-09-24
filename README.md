@@ -91,7 +91,7 @@ After this initiliazing step, you are ready to start using the tools below (sepa
 
 ### Overview
 
-[pull_student_repos.py](pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
+[gradertools/pull_student_repos.py](gradertools/pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
 It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
 Compliance with NBgrader  requires a few special tricks (done automatically by the tool):
 

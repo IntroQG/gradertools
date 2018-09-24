@@ -154,7 +154,7 @@ Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can 
 You can start nbgrader from command line. You should first navigate to the base-folder that you defined in the [initial step above](#setting-up-things-for-the-first-time).
 
 ```
-$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\gradertools
+$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
 
 $ jupyter notebook
 ```

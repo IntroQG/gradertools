@@ -12,8 +12,18 @@ Created on Sat Sep 15 19:57:24 2018
 
 @author: Henrikki Tenkanen
 """
-from gradertools.config.tools_conf import base_folder, organization
-from gradertools.config.get_students_of_assistant import get_course_students
+
+def set_to_path():
+    """Set gradertool directories to the path so that configuration works from parent folder"""
+    import sys, os
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools', 'gradertools', 'graderconfig'))
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools', 'gradertools'))
+
+# Set grader tools to path
+set_to_path()
+from tools_conf import base_folder, organization
+from get_students_of_assistant import get_course_students
+from get_course_assignments import create_assignments
 
 c = get_config()
 
@@ -30,26 +40,21 @@ c.Exchange.course_id = organization
 #  current working directory.
 c.CourseDirectory.root = base_folder
 
-# Update this list with other assignments you want
-c.CourseDirectory.db_assignments = [dict(name="Exercise-1"),
-                                    dict(name="Exercise-2"), 
-                                    dict(name="Exercise-3"), 
-                                    dict(name="Exercise-4"), 
-                                    dict(name="Exercise-5"),
-                                    dict(name="Exercise-6"), 
-                                    dict(name="Exercise-7")]
+# The directory for release
+c.Exchange.course_id = organization
+c.Exchange.root = base_folder
+
+# Whether to create the assignment at runtime if it does not already exist.
+c.Assign.create_assignment = True
 
 # Change the students in this list with that actual students in
 # your course
 
 c.CourseDirectory.db_students = get_course_students()
-print(c.CourseDirectory.db_students)
-
-c.IncludeHeaderFooter.header = "source/header.ipynb"
-
+#print(c.CourseDirectory.db_students)
+    
 # The code snippet that will replace code solutions
 c.ClearSolutions.code_stub = {'python': '# REPLACE THE ERROR BELOW WITH YOUR OWN CODE\nraise NotImplementedError()'}
-
 
 ###############################################################################
 # End additions by nbgrader quickstart

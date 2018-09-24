@@ -1,3 +1,4 @@
 __pycache__
+.idea
 gradertools/config/slack_conf.py
 gradertools/Git_commit_push_assessment_files.py

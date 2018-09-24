@@ -8,7 +8,7 @@ Created on Mon Sep 17 22:21:02 2018
 
 @author: Henrikki Tenkanen
 """
-from config.tools_conf import inspector_user_name, student_info_file, github_username_column,name_column, assistant_column
+from graderconfig.tools_conf import inspector_user_name, student_info_file, github_username_column,name_column, assistant_column
 import pandas as pd
 
 def get_students_of_assistant_df(user_name, student_info_file):

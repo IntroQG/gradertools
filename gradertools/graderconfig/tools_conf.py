@@ -21,6 +21,35 @@ Created on Sat Sep 15 19:57:24 2018
 @author: Henrikki Tenkanen
 """
 
+import os
+
+# =============================================
+# Functions to get default directory paths
+#   Do not touch
+# =============================================
+
+def get_current_path():
+    """Returns current path of the file that is being excecuted."""
+    current_path = os.path.dirname(os.path.realpath(__file__))
+    return current_path
+
+def get_data_directory_path():
+    """Returns a default path to data directory of gradertools (two levels up)"""
+    current_path = get_current_path()
+    # Data path is two levels up
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(current_path)), 'data')
+    if os.path.exists(data_dir):
+        return data_dir
+    else:
+        raise ValueError("Data directory was not in it's default location. Looked from: %s" % data_dir)
+
+def get_project_root_path():
+    """Returns a default path to data directory of gradertools (three levels up)"""
+    current_path = get_current_path()
+    # Path is three levels up
+    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(current_path)))
+    return root_dir
+
 # ===============================
 # Exercise / Classroom parameters
 # ===============================
@@ -50,8 +79,9 @@ extra_repos = []
 # Nbgrader parameters
 # ===================
 
-# Base folder where repositories will be collected
-base_folder = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018"
+# Base folder where repositories will be collected 
+# You can modify this but the default value should be okay (three levels up from the location of this file)
+base_folder = get_project_root_path()
 
 # Convert GitHub repository name to format supported by NBgrader
 use_nbgrader_style = True
@@ -73,8 +103,12 @@ send_to_github = True
 # Student information parameters
 # ===============================
 
+
 # File containing the student info (e.g. Slack info + GitHub usernames)
-student_info_file = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\tools\data\Geopy_Autogis_students_with_Slack_info.csv"
+# You can manually specify path to 'student_info_file' below if needed. The 'gradertools/data' -folder is the default location for student information
+data_dir = get_data_directory_path()
+student_info_filename = "Geopy_Autogis_students_with_Slack_info.csv"
+student_info_file = os.path.join(data_dir, student_info_filename)
 
 # Required column names
 github_username_column = 'Githubname'

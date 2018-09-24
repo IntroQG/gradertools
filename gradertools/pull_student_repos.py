@@ -30,7 +30,9 @@ from nbgrader.api import Gradebook, MissingEntry
 from traitlets.config import Config
 import shutil
 from sys import platform
-from config.tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
+import subprocess
+from graderconfig.tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
+from util import get_source_notebook_files
 
 def create_remote(repo, github_remote_url):
     """Creates a remote to specified url."""
@@ -134,7 +136,7 @@ def update_autograding_source_repo(base_folder, enumber):
             raise ValueError("%s directory contains something else than the source files of Exercise-%s. Please check and ensure that the directory contains valid materials.\nRemote: %s" % (exercise_dir, enumber, repo.remotes.origin.url))
     # If not clone it
     else:
-        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s%s" % (enumber, autograding_suffix)), repo_path=source_dir)
+        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s%s" % (enumber, autograding_suffix)), repo_path=exercise_dir)
         
 def update_autograding_release_repo(base_folder, enumber):
     """Clones / pulls the autograding release files"""
@@ -287,18 +289,24 @@ def generate_github_remote(organization, repository_name):
     """Generates remote url"""
     return 'https://github.com/%s/%s.git' % (organization, repository_name)
 
-
-
-def create_assignment(exercise_number):
-    """Creates nbgrader assignment (adds it into the grading database)."""
-#    assignment = "Exercise-%s" % exercise_number
+def add_assignment(base_folder, exercise_number):
+    """Adds assignment """
+    # Assignment name
+    assignment = "Exercise-%s" % exercise_number
+    print("Adding assignment %s" % assignment)
     
-    # Create a custom config object to specify options for nbgrader
-#    config = Config()
-#    config.Exchange.course_id = organization
-#    config.Exchange.coursedir = base_folder
-#    api = NbGraderAPI(config=config)
-    # Create the connection to the database
+    subprocess.call([ "nbgrader", "db", "assignment", "add", "%s" % assignment], cwd=base_folder)
+    return True
+
+def create_assignment(base_folder, exercise_number):
+    """Creates nbgrader assignment (adds it into the grading database)."""
+    # Assignment name
+    assignment = "Exercise-%s" % exercise_number
+    
+    print("Assign %s" % (assignment))
+    subprocess.call([ "nbgrader", "assign", assignment], cwd=base_folder)
+    
+    return True
 
 def main():
     
@@ -307,14 +315,14 @@ def main():
     
         for enumber in exercise_list:
             
-            # Create Assignment if it does not exist
-#            create_assignment(enumber)
+            # Create Assignment
+            added = add_assignment(base_folder, enumber)
             
             # Clone / pull the autograding repository from GitHub if it does not exist
             update_autograding_source_repo(base_folder, enumber)
             
-            # Clone / pull the GitHub Classroom repository of the Exercise from GitHub if it does not exist
-            update_autograding_release_repo(base_folder, enumber)
+            # Add release files ('nbgrader assign')
+            assigned = create_assignment(base_folder, enumber)
             
             # Create submitted folder if it does not exist
             submitted_f = create_submitted_folder(base_folder)

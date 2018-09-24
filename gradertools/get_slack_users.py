@@ -11,7 +11,7 @@ Created on Fri Sep 14 20:24:39 2018
 @author: Henrikki Tenkanen
 """
 from slackclient import SlackClient
-from slack_conf import slack_token
+from graderconfig.slack_conf import slack_token
 import pandas as pd
 
 def get_workspace_users(client):

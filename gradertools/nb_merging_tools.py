@@ -59,20 +59,4 @@ def merge_notebooks(base_folder, exercise_number):
     # Merge and save
     merge_nbs(notebooks, base_dir, outfp)
     
-def get_autograded_user_notebook_files(base_folder, exercise_number, user):
-    """Collects all autograded notebook files of a user"""
-    tmpl = os.path.join(base_folder, 'autograded', user, "Exercise-%s" % exercise_number,"Exercise-%s*.ipynb" % exercise_number)
-    files = glob.glob(tmpl)
-    return (files, os.path.dirname(tmpl))
 
-def get_submitted_user_notebook_files(base_folder, exercise_number, user):
-    """Collects all submitted exercise notebook files of a user"""
-    tmpl = os.path.join(base_folder, 'submitted', user, "Exercise-%s" % exercise_number,"Exercise-%s*.ipynb" % exercise_number)
-    files = glob.glob(tmpl)
-    return (files, os.path.dirname(tmpl))
-
-def get_notebook_files(base_folder):
-    """Get all notebooks inside a folder"""
-    tmpl = os.path.join(base_folder, "*.ipynb")
-    files = glob.glob(tmpl)
-    return (files, os.path.dirname(tmpl))

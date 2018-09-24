@@ -17,9 +17,9 @@ import time
 # ===========================================
 # Get parameters from the configuration files
 # ===========================================
-from config.tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
-from config.tools_conf import user_names, exercise_list
-from config.slack_conf import slack_token
+from graderconfig.tools_conf import base_folder, inspector_user_name, send_to_slack, send_to_github, student_info_file, github_username_column, name_column, slack_id_column, slack_display_name_column, generate_pdf
+from graderconfig.tools_conf import user_names, exercise_list
+from graderconfig.slack_conf import slack_token
 
 def main():
     

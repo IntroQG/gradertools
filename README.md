@@ -65,6 +65,16 @@ This can be for example (as set in these scripts):
  C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
  ```
 
+When you have created the base folder for your exercises, you **need to clone this `gradertools` repository** into the base folder:
+
+ ```
+ $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+
+ $ git clone https://github.com/geo-python/gradertools
+
+ ```
+
+
 After you have created that folder, go into it in terminal or command line and **start the nbgrader for the first time** to set things up:
 
  - Configure in a way that nbgrader extension launches every time you open Jupyter Notebook:
@@ -76,15 +86,6 @@ After you have created that folder, go into it in terminal or command line and *
     - `$ jupyter notebook`
 
  - When you have launched the nbgrader and the notebook for the first time, and they seem to be working (no errors), that is all you need to do at this point.
-
-After you **need to clone this `tools` repository** into the base folder (not necessary but useful):
-
- ```
- $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
-
- $ git clone https://github.com/geo-python/tools
-
- ```
 
 After this, you are ready to start using the tools below (separate instructions for each of them).
 

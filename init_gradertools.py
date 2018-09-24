@@ -8,17 +8,17 @@ Script for initializing the gradertools environment and testing that everything 
 """
 
 import os
-import sys
+import subprocess
 import shutil
 
 print("======================================\nInitializing gradertools environment\n======================================\n\n")
 
 # Get the directory path to the current and parent directory
-parent_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 current_path = os.path.dirname(os.path.realpath(__file__))
+parent_path = os.path.dirname(current_path)
 
 # Copy the nbgrader configuration file to the parent directory
-nbgrader_config = os.path.join(current_path, 'gradertools', 'config', 'nbgrader_config.py')
+nbgrader_config = os.path.join(current_path, 'gradertools', 'graderconfig', 'nbgrader_config.py')
 target_path = os.path.join(parent_path, 'nbgrader_config.py')
 
 if not os.path.exists(target_path):
@@ -36,7 +36,9 @@ else:
 failed_tests = []        
 try:
     import nbgrader
-    print("Nbgrader installed: [ok]")
+    # Initialize nbgrader in a way that it opens whenever jupyter notebook is launched
+    subprocess.call(["jupyter", "nbextension", "enable", "--py", "nbgrader"], cwd=parent_path)
+    print("Nbgrader installed and extension enabled: [ok]")
 except:
     failed_tests.append("Nbgrader Python package is not installed. You need to install it first:\n\nconda install -c conda-forge nbgrader")
 try:

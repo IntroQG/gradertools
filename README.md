@@ -134,7 +134,7 @@ The tool is managed from [gradertools/graderconfig/tools_conf.py](gradertools/gr
 
 ### How to run?
 
-This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [tools_conf.py](tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
+This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
 
 After you have configured everything (see above), you can run the tool from terminal or command prompt.
 

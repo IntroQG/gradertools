@@ -33,6 +33,7 @@ from sys import platform
 import subprocess
 from graderconfig.tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
 from util import get_source_notebook_files
+import warnings
 
 def create_remote(repo, github_remote_url):
     """Creates a remote to specified url."""
@@ -283,7 +284,7 @@ def git_clone(github_remote, repo_path):
     try:
         Repo.clone_from(github_remote, repo_path)
     except Exception as e:
-        raise e
+        warnings.warn(e)
 
 def generate_github_remote(organization, repository_name):
     """Generates remote url"""

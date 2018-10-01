@@ -1,86 +1,86 @@
-row,id,team_id,name,real_name,display_name,Githubname,Name,Course,Assistant_EX1-Ex2,Assistant,Ex1,Ex2,Ex3,Ex4,Ex5,Ex6,Ex7
-0,UCLNSPVAM,TCBPT2F38,alexandra.arppe,Alexandra Arppe,Alexandra,arppeal,Alexandra Arppe,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-1,UCLNU197B,TCBPT2F38,juhana.simula,Juhana Simula,Juhana,marvaaja,Juhana Simula,AutoGIS,Hertta,Hertta,20,9,,,,,
-2,UCLNUTYGH,TCBPT2F38,katrin.wernicke,Katrin,,wernic,Katrin Wernicke,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-3,UCLNVGL3B,TCBPT2F38,suvi.heittola,Suvi,,suheitt,Suvi Heittola,AutoGIS,Hertta,Hertta,20,20,,,,,
-4,UCLNW88HF,TCBPT2F38,jussi.torkko,Jussi,Jussi,jusba,Jussi Torkko,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-5,UCLP3BJRF,TCBPT2F38,tatu.leppamaki,Tatu Leppämäki,Tatu,Tadusko,Tatu Leppämäki,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-6,UCLSG9YAD,TCBPT2F38,barbro.sagmoen,Barbro Sagmoen,Barbro,sagmoen,Barbro Sagmoen,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-7,UCM6NFT3M,TCBPT2F38,sara.todorovic,Sara Todorovic,Sara,saratodorovic,Sara Todorovic,AutoGIS,Hertta,Hertta,20,20,,,,,
-8,UCM6NPY4B,TCBPT2F38,pauli.voipio,Pauli,,pvoipio,Pauli Voipio,AutoGIS,Oyelowo,Hertta,20,20,,,,,
-9,UCM6RUNG3,TCBPT2F38,erno.haapasalo,Erno Haapasalo,Erno,Ernohaa,Erno Haapasalo,AutoGIS,Hertta,Hertta,20,20,,,,,
-10,UCM72DXHS,TCBPT2F38,assi-johanna.soini,Assi Soini,Assi,ajsoini,Assi Soini,AutoGIS,Hertta,Hertta,20,20,,,,,
-11,UCMD5SBPU,TCBPT2F38,petra.saari,Petra Saari,Petra,petrams,Petra Saari,AutoGIS,Hertta,Hertta,20,20,,,,,
-12,UCMDE5XB6,TCBPT2F38,juho.niskala,Juho Niskala,JuhoN,kuhamade,Juho Niskala,AutoGIS,Hertta,Hertta,20,20,,,,,
-13,UCMEZL59B,TCBPT2F38,temesgen.abera,Abera Temesgen,Teme,temesgen1858,Abera Temesgen,AutoGIS,Hertta,Hertta,20,20,,,,,
-14,UCMF1FL2H,TCBPT2F38,ella.rauth,Ella Rauth,Ella,ellarauth,Ella Rauth,AutoGIS,Hertta,Hertta,20,20,,,,,
-15,UCMFR6L2U,TCBPT2F38,lhlbrente,Lars Henrik Løchen Brente,Lers,LzR113,Lars Henrik L. Brente,AutoGIS,Hertta,Hertta,20,20,,,,,
-16,UCMFWPS3S,TCBPT2F38,pieter-jan.dejaegere,Pieter-Jan Dejaegere,Pieter-Jan,pieterjandejaegere,Pieter-Jan Dejaegere,AutoGIS,Hertta,Hertta,20,20,,,,,
-17,UCN6ZMGQ2,TCBPT2F38,maiju.karhu,Maiju Karhu,Maiju,maikarhu,Maiju Karhu,AutoGIS,Hertta,Hertta,20,20,,,,,
-18,UCNAVKRB3,TCBPT2F38,henri.riihimaki,Henri Riihimäki,Henri Riihimäki,hriihimaki,Henri Riihimäki,AutoGIS,Vuokko,Hertta,20,20,,,,,
-19,UCNLGCXCN,TCBPT2F38,matias.jarvinen,Matias Järvinen,vatys,mvtteus,Matias Järvinen,AutoGIS,Hertta,Hertta,20,20,,,,,
-20,UCNRL8W5V,TCBPT2F38,joose.helle,Joose Helle,Joose,hellej,Joose Helle,AutoGIS,Hertta,Hertta,20,20,,,,,
-21,UCPHT8GS2,TCBPT2F38,teemu.jama,Teemu Jama,tj,teemuja,Teemu Jama,AutoGIS,Hertta,Hertta,20,0,,,,,
-22,UCL878VC0,TCBPT2F38,dean.rahman,Dean Rahman,Dean,dean-rahman,Dean Rahman,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-23,UCM3DEY56,TCBPT2F38,juuso.muttilainen,Juuso Muttilainen,,juusmutt1,Juuso Muttilainen,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-24,UCM3DUXAQ,TCBPT2F38,sakari.sarjakoski,Sakari Sarjakoski,Sakke,Sarjakoski,Sakari Sarjakoski,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-25,UCM7MF86Q,TCBPT2F38,emma.piela,Emma Piela,Emma Piela,EmmaPiela,Emma Piela,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-26,UCMCC411A,TCBPT2F38,mika.sankari,Mika Sankari,Mika,MikaSankari,Mika Sankari,AutoGIS,Vuokko,Oyelowo,20,18,,,,,
-27,UCMED36UB,TCBPT2F38,leonie.betzler,Leonie Betzler,leoniebetzler,LeonieBetzler,Leonie Betzler,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-28,UCMHFM45A,TCBPT2F38,kerli.muurisepp,Kerli Müürisepp,Kerli,kerlimy,Kerli Müürisepp,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-29,UCNAL7Q2Z,TCBPT2F38,uula.saastamoinen,Uula Saastamoinen,uula,uulalaa,Uula Saastamoinen,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-30,UCNBLK08P,TCBPT2F38,hari.adhikari,Hari Adhikari,Hari,adhihari,Hari Adhikari,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-31,UCNC9CJFP,TCBPT2F38,loar.hallerod,Loar Halleröd,Loar,hallerod,Loar Halleröd,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-32,UCNLC24GN,TCBPT2F38,olli.a.rantanen,Olli Rantanen,Olli,ollirantanen,Olli Rantanen,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-33,UCNLDRE4E,TCBPT2F38,aleksi.rikkinen,Aleksi Rikkinen,Aleksi,alekrikk,Aleksi Rikkinen,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-34,UCNQQLTTQ,TCBPT2F38,aline.muller,Aline Müller,mulleraline,mulleral,Aline Müller,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-35,UCP55SVNK,TCBPT2F38,anni-elina.aittamaki,Anni-Elina Aittamäki,Anneli,Anneliaitt,Anni-Elina Aittamäki,AutoGIS,Oyelowo,Oyelowo,20,20,,,,,
-36,UCPDXPR7G,TCBPT2F38,arttu.k,Arttu Kivimäki,Arttu,kiviartt,Arttu Kivimäki,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-37,UCPGZG7NJ,TCBPT2F38,liangzhi.chen,Chen liangzhi,liangzhi,chenliangzhi2016,Liangzhi Chen,AutoGIS,Oyelowo,Oyelowo,20,10,,,,,
-38,UCPKD45P0,TCBPT2F38,eero.perola,Eero Perola,,pe5,Eero Perola,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-39,UCPQEA98D,TCBPT2F38,maaria.haavisto,Maaria Haavisto,maikkish,maikkish,Maaria Haavisto,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-40,UCRJ3450C,TCBPT2F38,timo.ijas,timo ijäs,,himotimo,Timo Ijäs,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-41,UCSR1EKT2,TCBPT2F38,juho.noro,Juho Noro,jnoro,jnoro,Juho Noro,AutoGIS,Vuokko,Oyelowo,20,20,,,,,
-42,UCSTMD570,TCBPT2F38,jonne.alkiomaa,Jonne Alkiomaa,Johnny,jjukalek,Jonne Alkiomaa,AutoGIS,Vuokko,Oyelowo,20,0,,,,,
-66,UCV21PNGN,TCBPT2F38,sheila.wachiye,Sheila Wachiye,Sheila,swachiye,Sheila Wachiye,GeoPython,Vuokko,Oyelowo,20,20,,,,,
-43,UCVNFUDTJ,TCBPT2F38,mikko.kaskenpaa,Mikko,Miklo,mikkaske,Mikko Kaskenpää,AutoGIS,Vuokko,Vuokko,0,0,,,,,
-44,UCMF02005,TCBPT2F38,xiaodong.li,Xiaodong Li,Xiaodong,XiaodongLii,Xiaodong Li,GeoPython,Lotta,Lotta,20,20,,,,,
-45,UCMF2G0R3,TCBPT2F38,letizia.caravella,Letizia Caravella,Letizia,LetiziaCaravella,Letizia Caravella,GeoPython,Lotta,Lotta,20,15,,,,,
-46,UCMJJ359N,TCBPT2F38,sonja.rahikkala,Sonja Rahikkala,,sonjarahikkala,Sonja Rahikkala,GeoPython,Lotta,Lotta,20,18,,,,,
-47,UCMLK8QLC,TCBPT2F38,juha.tauriainen,Juha Tauriainen,Juha,JuhQ,Juha Tauriainen,GeoPython,Lotta,Lotta,20,20,,,,,
-48,UCMPH42NP,TCBPT2F38,sara080785,Sara Rezaei,Sara,sara1985,Sara Rezaei,GeoPython,Lotta,Lotta,20,20,,,,,
-49,UCN2XKP2B,TCBPT2F38,christos.ioannou,Christos Ioannou,Christos,christosgeol,Christos Ioannou,GeoPython,Vuokko,Lotta,20,19,,,,,
-50,UCN75P8AW,TCBPT2F38,ilkka.kettunen,Ilkka Kettunen,Ilkka,ilkkaket,Ilkka Kettunen,GeoPython,Lotta,Lotta,20,20,,,,,
-51,UCN7PSHGW,TCBPT2F38,tuuli.hankaankorpi,Tuuli Hankaankorpi,Tuuli,Tuulih,Tuuli Hankaankorpi,GeoPython,Lotta,Lotta,20,20,,,,,
-52,UCN7Q8JRW,TCBPT2F38,sebastian.schaller,Sebastian Schaller,Sebastian,SebastianSchaller,Sebastian Schaller,GeoPython,Lotta,Lotta,20,20,,,,,
-53,UCN9BF2C8,TCBPT2F38,ida-maria.hanski,Ida-Maria Hanski,Ida-Maria,idamarih,Ida-Maria Hanski,GeoPython,Lotta,Lotta,20,19,,,,,
-54,UCNBKG1T9,TCBPT2F38,amy.johns,Amy Johns,Amy,amyjohns1,Amy Johns,GeoPython,Vuokko,Lotta,20,20,,,,,
-55,UCNCE8GC9,TCBPT2F38,lauri.rinne,Lauri Rinne,Lauri,laurinne,Lauri Rinne,GeoPython,Lotta,Lotta,20,20,,,,,
-56,UCNGUJHFZ,TCBPT2F38,roope.hamalainen,Roope Hämäläinen,drumliini,drumliini,Roope Hämäläinen,GeoPython,Lotta,Lotta,20,18,,,,,
-57,UCNJNLTHV,TCBPT2F38,toni.liimatainen,Toni Liimatainen,Toni L,toniliim,Toni Liimatainen,GeoPython,Lotta,Lotta,20,20,,,,,
-58,UCNKLDV70,TCBPT2F38,oliver.teras,Oliver Teräs,Oliver,Ozkqq,Oliver Teräs,GeoPython,Lotta,Lotta,20,19,,,,,
-59,UCNPT1PQV,TCBPT2F38,edward.amara,Edward Amara,Amara,amarae,Edward Amara,GeoPython,Vuokko,Lotta,20,20,,,,,
-60,UCPJ01QH5,TCBPT2F38,kristiina.virit,Kristiina Virit,kristiina_virit,KristiinaVirit,Kristiina Virit,GeoPython,Lotta,Lotta,20,19,,,,,
-61,UCPUTE27K,TCBPT2F38,zhipeng.tang,Zhipeng Tang,,tangzhipeng,Zhipeng Tang,GeoPython,Lotta,Lotta,20,19,,,,,
-62,UCQ17H5NG,TCBPT2F38,kati.oinonen,Kati Oinonen,KatiO,KatiOi,Kati Oinonen,GeoPython,Lotta,Lotta,10,0,,,,,
-63,UCR35MRRB,TCBPT2F38,teemu.ahonen,Teemu Ahonen,Teemu,temetulemast,Teemu Ahonen,GeoPython,Lotta,Lotta,20,12,,,,,
-64,UCRP58ZGS,TCBPT2F38,heikki.erola,Heikki Erola,heksa1,heksa1,Heikki Erola,GeoPython,Lotta,Lotta,10,0,,,,,
-65,UCS0TCEBF,TCBPT2F38,katja.tahti,Katja Tähti,Katja T,katjatahti,Katja Tähti,GeoPython,Lotta,Lotta,10,0,,,,,
-67,UCLJ7E0BS,TCBPT2F38,sofia.malmstrom,Sofia Malmström,Rosa,rosasofia,Sofia Malmström,GeoPython,Lotta,Vuokko,20,19,,,,,
-68,UCLJFNV24,TCBPT2F38,ilmari.pakkala,llmari,Ilmari,ilmarip,Ilmari Pakkala,GeoPython,Lotta,Vuokko,20,18,,,,,
-69,UCLMJH109,TCBPT2F38,joona.clergeaud,Joona Clergeaud,cjoona,cjoona,Joona Clergeaud,GeoPython,Vuokko,Vuokko,20,20,,,,,
-70,UCLN5AWAV,TCBPT2F38,theo.mannisto,Theo Männistö,Theo,theomannisto,Theo Männistö,GeoPython,Lotta,Vuokko,20,20,,,,,
-71,UCLPCDJR1,TCBPT2F38,jasmin.maunula,Jasmin Maunula,Jasmin,jasminmaunula,Jasmin Maunula,GeoPython,Lotta,Vuokko,20,20,,,,,
-72,UCM0BSFJ5,TCBPT2F38,mehrghadimi.geo,Mehrnoosh Ghadimi,,Mehrnooshi,Mehrnoosh Ghadimi,GeoPython,Lotta,Vuokko,20,20,,,,,
-73,UCM11T2S1,TCBPT2F38,zilan.wen,Zilan Wen,Zilan,Tianwaibian,Zilan Wen,GeoPython,Lotta,Vuokko,20,20,,,,,
-74,UCM2BMT9T,TCBPT2F38,emi.lagerspets,Emi Lagerspets,Emi,emilager,Emi Lagerspets,GeoPython,Lotta,Vuokko,20,19,,,,,
-75,UCM2PQX8C,TCBPT2F38,ahti.voutilainen,Ahti Voutilainen,Ahti,AhtiV,Ahti Voutilainen,GeoPython,Vuokko,Vuokko,20,20,,,,,
-76,UCM8VP8TV,TCBPT2F38,christoph.brendel,Christoph Brendel,Brenchri,Brenchri,Cristoph Brendel,GeoPython,Vuokko,Vuokko,20,16,,,,,
-77,UCMA9QCE6,TCBPT2F38,tahvo.oksanen,Tahvo Oksanen,Tahvo,okTahvo,Tahvo Oksanen,GeoPython,Lotta,Vuokko,20,20,,,,,
-78,UCMABKNDR,TCBPT2F38,keith.galvin,Keith Galvin,,keithgalvin,Keith Galvin,GeoPython,Lotta,Vuokko,20,20,,,,,
-79,UCMAEJQFL,TCBPT2F38,aliisa.laakkonen,Aliisa Laakkonen,,aliisala,Aliisa Laakkonen,GeoPython,Vuokko,Vuokko,20,20,,,,,
-80,UCMEGV264,TCBPT2F38,ronja.paivarinta,Ronja Päivärinta,Ronja,ronjapai,Ronja Päivärinta,GeoPython,Lotta,Vuokko,20,20,,,,,
-81,UCMGZ0A10,TCBPT2F38,katerina.bockova,Kateřina Bočková,KateBockova,KateBockova,Katerina Bockova,GeoPython,Lotta,Vuokko,20,20,,,,,
-82,UCMH5NW84,TCBPT2F38,vili.stick,Vili,Vili,veliblesku,Vili Stick,GeoPython,Lotta,Vuokko,20,13,,,,,
-83,UCP4KJ26S,TCBPT2F38,tuomo.viirret,tuomo viirret,tuomo,Vituomo,Tuomo Viirret,GeoPython,Lotta,Vuokko,20,15,,,,,
-84,UCQA37KD4,TCBPT2F38,jessica.dias,Jessica Dias de Souza,Jessica Dias,jessicadds,Jessica Dias,GeoPython,Lotta,Vuokko,20,20,,,,,
+id,team_id,name,real_name,display_name,Githubname,Name,Course,Assistant
+UCLNSPVAM,TCBPT2F38,alexandra.arppe,Alexandra Arppe,Alexandra,arppeal,Alexandra Arppe,AutoGIS,Hertta
+UCLNU197B,TCBPT2F38,juhana.simula,Juhana Simula,Juhana,marvaaja,Juhana Simula,AutoGIS,Hertta
+UCLNUTYGH,TCBPT2F38,katrin.wernicke,Katrin,Katrin,wernic,Katrin Wernicke,AutoGIS,Hertta
+UCLNVGL3B,TCBPT2F38,suvi.heittola,Suvi,Suvi,suheitt,Suvi Heittola,AutoGIS,Hertta
+UCLNW88HF,TCBPT2F38,jussi.torkko,Jussi,Jussi,jusba,Jussi Torkko,AutoGIS,Hertta
+UCLP3BJRF,TCBPT2F38,tatu.leppamaki,Tatu Leppämäki,Tatu,Tadusko,Tatu Leppämäki,AutoGIS,Hertta
+UCLSG9YAD,TCBPT2F38,barbro.sagmoen,Barbro Sagmoen,Barbro,sagmoen,Barbro Sagmoen,AutoGIS,Hertta
+UCM6NFT3M,TCBPT2F38,sara.todorovic,Sara Todorovic,Sara,saratodorovic,Sara Todorovic,AutoGIS,Hertta
+UCM6NPY4B,TCBPT2F38,pauli.voipio,Pauli,Pauli,pvoipio,Pauli Voipio,AutoGIS,Hertta
+UCM6RUNG3,TCBPT2F38,erno.haapasalo,Erno Haapasalo,Erno,Ernohaa,Erno Haapasalo,AutoGIS,Hertta
+UCM72DXHS,TCBPT2F38,assi-johanna.soini,Assi Soini,Assi,ajsoini,Assi Soini,AutoGIS,Hertta
+UCMD5SBPU,TCBPT2F38,petra.saari,Petra Saari,Petra,petrams,Petra Saari,AutoGIS,Hertta
+UCMDE5XB6,TCBPT2F38,juho.niskala,Juho Niskala,JuhoN,kuhamade,Juho Niskala,AutoGIS,Hertta
+UCMEZL59B,TCBPT2F38,temesgen.abera,Abera Temesgen,Teme,temesgen1858,Abera Temesgen,AutoGIS,Hertta
+UCMF1FL2H,TCBPT2F38,ella.rauth,Ella Rauth,Ella,ellarauth,Ella Rauth,AutoGIS,Hertta
+UCMFR6L2U,TCBPT2F38,lhlbrente,Lars Henrik Løchen Brente,Lers,LzR113,Lars Henrik L. Brente,AutoGIS,Hertta
+UCMFWPS3S,TCBPT2F38,pieter-jan.dejaegere,Pieter-Jan Dejaegere,Pieter-Jan,pieterjandejaegere,Pieter-Jan Dejaegere,AutoGIS,Hertta
+UCN6ZMGQ2,TCBPT2F38,maiju.karhu,Maiju Karhu,Maiju,maikarhu,Maiju Karhu,AutoGIS,Hertta
+UCNAVKRB3,TCBPT2F38,henri.riihimaki,Henri Riihimäki,Henri Riihimäki,hriihimaki,Henri Riihimäki,AutoGIS,Hertta
+UCNLGCXCN,TCBPT2F38,matias.jarvinen,Matias Järvinen,vatys,mvtteus,Matias Järvinen,AutoGIS,Hertta
+UCNRL8W5V,TCBPT2F38,joose.helle,Joose Helle,Joose,hellej,Joose Helle,AutoGIS,Hertta
+UCPHT8GS2,TCBPT2F38,teemu.jama,Teemu Jama,tj,teemuja,Teemu Jama,AutoGIS,Hertta
+UCL878VC0,TCBPT2F38,dean.rahman,Dean Rahman,Dean,dean-rahman,Dean Rahman,AutoGIS,Oyelowo
+UCM3DEY56,TCBPT2F38,juuso.muttilainen,Juuso Muttilainen,,juusmutt1,Juuso Muttilainen,AutoGIS,Oyelowo
+UCM3DUXAQ,TCBPT2F38,sakari.sarjakoski,Sakari Sarjakoski,Sakke,Sarjakoski,Sakari Sarjakoski,AutoGIS,Oyelowo
+UCM7MF86Q,TCBPT2F38,emma.piela,Emma Piela,Emma Piela,EmmaPiela,Emma Piela,AutoGIS,Oyelowo
+UCMCC411A,TCBPT2F38,mika.sankari,Mika Sankari,Mika,MikaSankari,Mika Sankari,AutoGIS,Oyelowo
+UCMED36UB,TCBPT2F38,leonie.betzler,Leonie Betzler,leoniebetzler,LeonieBetzler,Leonie Betzler,AutoGIS,Oyelowo
+UCMHFM45A,TCBPT2F38,kerli.muurisepp,Kerli Müürisepp,Kerli,kerlimy,Kerli Müürisepp,AutoGIS,Oyelowo
+UCNAL7Q2Z,TCBPT2F38,uula.saastamoinen,Uula Saastamoinen,uula,uulalaa,Uula Saastamoinen,AutoGIS,Oyelowo
+UCNBLK08P,TCBPT2F38,hari.adhikari,Hari Adhikari,Hari,adhihari,Hari Adhikari,AutoGIS,Oyelowo
+UCNC9CJFP,TCBPT2F38,loar.hallerod,Loar Halleröd,Loar,hallerod,Loar Halleröd,AutoGIS,Oyelowo
+UCNLC24GN,TCBPT2F38,olli.a.rantanen,Olli Rantanen,Olli,ollirantanen,Olli Rantanen,AutoGIS,Oyelowo
+UCNLDRE4E,TCBPT2F38,aleksi.rikkinen,Aleksi Rikkinen,Aleksi,alekrikk,Aleksi Rikkinen,AutoGIS,Oyelowo
+UCNQQLTTQ,TCBPT2F38,aline.muller,Aline Müller,mulleraline,mulleral,Aline Müller,AutoGIS,Oyelowo
+UCP55SVNK,TCBPT2F38,anni-elina.aittamaki,Anni-Elina Aittamäki,Anneli,Anneliaitt,Anni-Elina Aittamäki,AutoGIS,Oyelowo
+UCPDXPR7G,TCBPT2F38,arttu.k,Arttu Kivimäki,Arttu,kiviartt,Arttu Kivimäki,AutoGIS,Oyelowo
+UCPGZG7NJ,TCBPT2F38,liangzhi.chen,Chen liangzhi,liangzhi,chenliangzhi2016,Liangzhi Chen,AutoGIS,Oyelowo
+UCPKD45P0,TCBPT2F38,eero.perola,Eero Perola,Eero,pe5,Eero Perola,AutoGIS,Oyelowo
+UCPQEA98D,TCBPT2F38,maaria.haavisto,Maaria Haavisto,maikkish,maikkish,Maaria Haavisto,AutoGIS,Oyelowo
+UCRJ3450C,TCBPT2F38,timo.ijas,timo ijäs,Timo,himotimo,Timo Ijäs,AutoGIS,Oyelowo
+UCSR1EKT2,TCBPT2F38,juho.noro,Juho Noro,jnoro,jnoro,Juho Noro,AutoGIS,Oyelowo
+UCSTMD570,TCBPT2F38,jonne.alkiomaa,Jonne Alkiomaa,Johnny,jjukalek,Jonne Alkiomaa,AutoGIS,Oyelowo
+UCV21PNGN,TCBPT2F38,sheila.wachiye,Sheila Wachiye,Sheila,swachiye,Sheila Wachiye,GeoPython,Oyelowo
+UCVNFUDTJ,TCBPT2F38,mikko.kaskenpaa,Mikko,Miklo,mikkaske,Mikko Kaskenpää,AutoGIS,Vuokko
+UCMF02005,TCBPT2F38,xiaodong.li,Xiaodong Li,Xiaodong,XiaodongLii,Xiaodong Li,GeoPython,Lotta
+UCMF2G0R3,TCBPT2F38,letizia.caravella,Letizia Caravella,Letizia,LetiziaCaravella,Letizia Caravella,GeoPython,Lotta
+UCMJJ359N,TCBPT2F38,sonja.rahikkala,Sonja Rahikkala,Sonja,sonjarahikkala,Sonja Rahikkala,GeoPython,Lotta
+UCMLK8QLC,TCBPT2F38,juha.tauriainen,Juha Tauriainen,Juha,JuhQ,Juha Tauriainen,GeoPython,Lotta
+UCMPH42NP,TCBPT2F38,sara080785,Sara Rezaei,Sara,sara1985,Sara Rezaei,GeoPython,Lotta
+UCN2XKP2B,TCBPT2F38,christos.ioannou,Christos Ioannou,Christos,christosgeol,Christos Ioannou,GeoPython,Lotta
+UCN75P8AW,TCBPT2F38,ilkka.kettunen,Ilkka Kettunen,Ilkka,ilkkaket,Ilkka Kettunen,GeoPython,Lotta
+UCN7PSHGW,TCBPT2F38,tuuli.hankaankorpi,Tuuli Hankaankorpi,Tuuli,Tuulih,Tuuli Hankaankorpi,GeoPython,Lotta
+UCN7Q8JRW,TCBPT2F38,sebastian.schaller,Sebastian Schaller,Sebastian,SebastianSchaller,Sebastian Schaller,GeoPython,Lotta
+UCN9BF2C8,TCBPT2F38,ida-maria.hanski,Ida-Maria Hanski,Ida-Maria,idamarih,Ida-Maria Hanski,GeoPython,Lotta
+UCNBKG1T9,TCBPT2F38,amy.johns,Amy Johns,Amy,amyjohns1,Amy Johns,GeoPython,Lotta
+UCNCE8GC9,TCBPT2F38,lauri.rinne,Lauri Rinne,Lauri,laurinne,Lauri Rinne,GeoPython,Lotta
+UCNGUJHFZ,TCBPT2F38,roope.hamalainen,Roope Hämäläinen,drumliini,drumliini,Roope Hämäläinen,GeoPython,Lotta
+UCNJNLTHV,TCBPT2F38,toni.liimatainen,Toni Liimatainen,Toni L,toniliim,Toni Liimatainen,GeoPython,Lotta
+UCNKLDV70,TCBPT2F38,oliver.teras,Oliver Teräs,Oliver,Ozkqq,Oliver Teräs,GeoPython,Lotta
+UCNPT1PQV,TCBPT2F38,edward.amara,Edward Amara,Amara,amarae,Edward Amara,GeoPython,Lotta
+UCPJ01QH5,TCBPT2F38,kristiina.virit,Kristiina Virit,kristiina_virit,KristiinaVirit,Kristiina Virit,GeoPython,Lotta
+UCPUTE27K,TCBPT2F38,zhipeng.tang,Zhipeng Tang,Zhipeng,tangzhipeng,Zhipeng Tang,GeoPython,Lotta
+UCQ17H5NG,TCBPT2F38,kati.oinonen,Kati Oinonen,KatiO,KatiOi,Kati Oinonen,GeoPython,Lotta
+UCR35MRRB,TCBPT2F38,teemu.ahonen,Teemu Ahonen,Teemu,temetulemast,Teemu Ahonen,GeoPython,Lotta
+UCRP58ZGS,TCBPT2F38,heikki.erola,Heikki Erola,heksa1,heksa1,Heikki Erola,GeoPython,Lotta
+UCS0TCEBF,TCBPT2F38,katja.tahti,Katja Tähti,Katja T,katjatahti,Katja Tähti,GeoPython,Lotta
+UCLJ7E0BS,TCBPT2F38,sofia.malmstrom,Sofia Malmström,Rosa,rosasofia,Sofia Malmström,GeoPython,Vuokko
+UCLJFNV24,TCBPT2F38,ilmari.pakkala,llmari,Ilmari,ilmarip,Ilmari Pakkala,GeoPython,Vuokko
+UCLMJH109,TCBPT2F38,joona.clergeaud,Joona Clergeaud,cjoona,cjoona,Joona Clergeaud,GeoPython,Vuokko
+UCLN5AWAV,TCBPT2F38,theo.mannisto,Theo Männistö,Theo,theomannisto,Theo Männistö,GeoPython,Vuokko
+UCLPCDJR1,TCBPT2F38,jasmin.maunula,Jasmin Maunula,Jasmin,jasminmaunula,Jasmin Maunula,GeoPython,Vuokko
+UCM0BSFJ5,TCBPT2F38,mehrghadimi.geo,Mehrnoosh Ghadimi,,Mehrnooshi,Mehrnoosh Ghadimi,GeoPython,Vuokko
+UCM11T2S1,TCBPT2F38,zilan.wen,Zilan Wen,Zilan,Tianwaibian,Zilan Wen,GeoPython,Vuokko
+UCM2BMT9T,TCBPT2F38,emi.lagerspets,Emi Lagerspets,Emi,emilager,Emi Lagerspets,GeoPython,Vuokko
+UCM2PQX8C,TCBPT2F38,ahti.voutilainen,Ahti Voutilainen,Ahti,AhtiV,Ahti Voutilainen,GeoPython,Vuokko
+UCM8VP8TV,TCBPT2F38,christoph.brendel,Christoph Brendel,Brenchri,Brenchri,Cristoph Brendel,GeoPython,Vuokko
+UCMA9QCE6,TCBPT2F38,tahvo.oksanen,Tahvo Oksanen,Tahvo,okTahvo,Tahvo Oksanen,GeoPython,Vuokko
+UCMABKNDR,TCBPT2F38,keith.galvin,Keith Galvin,Keith,keithgalvin,Keith Galvin,GeoPython,Vuokko
+UCMAEJQFL,TCBPT2F38,aliisa.laakkonen,Aliisa Laakkonen,Aliisa,aliisala,Aliisa Laakkonen,GeoPython,Vuokko
+UCMEGV264,TCBPT2F38,ronja.paivarinta,Ronja Päivärinta,Ronja,ronjapai,Ronja Päivärinta,GeoPython,Vuokko
+UCMGZ0A10,TCBPT2F38,katerina.bockova,Kateřina Bočková,KateBockova,KateBockova,Katerina Bockova,GeoPython,Vuokko
+UCMH5NW84,TCBPT2F38,vili.stick,Vili,Vili,veliblesku,Vili Stick,GeoPython,Vuokko
+UCP4KJ26S,TCBPT2F38,tuomo.viirret,tuomo viirret,tuomo,Vituomo,Tuomo Viirret,GeoPython,Vuokko
+UCQA37KD4,TCBPT2F38,jessica.dias,Jessica Dias de Souza,Jessica Dias,jessicadds,Jessica Dias,GeoPython,Vuokko

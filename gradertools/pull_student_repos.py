@@ -24,15 +24,15 @@ Created on Wed Jan 11 13:55:44 2017
 """
 
 from git import Repo
+import pandas as pd
 import git
 import os
-from nbgrader.api import Gradebook, MissingEntry
-from traitlets.config import Config
 import shutil
 from sys import platform
 import subprocess
 from graderconfig.tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
 from util import get_source_notebook_files
+import time
 import warnings
 
 def create_remote(repo, github_remote_url):
@@ -201,6 +201,8 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
                 raise ValueError("%s directory contains something else than the studnet files for Exercise-%s. Please check and ensure that the directory contains valid materials." % (repo_path, exercise))
                 
     else:
+        # If repository has not been cloned yet
+        # -------------------------------------
         
         # Remove Exercise directory if it exists (so that it can be updated)
         remove_normal_directory(directory_path)
@@ -215,7 +217,11 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
         github_remote = generate_github_remote(organization, repo_name)
         
         # If cloning it should be done on the parent folder of the 'repo_path'
-        git_clone(github_remote, repo_path)
+        was_found = git_clone(github_remote, repo_path)
+        
+        # If the student has not started the assignment the repo path does not exist
+        if was_found is False:
+            repo_path = None
         
     return repo_path
 
@@ -284,7 +290,12 @@ def git_clone(github_remote, repo_path):
     try:
         Repo.clone_from(github_remote, repo_path)
     except Exception as e:
-        warnings.warn(e)
+        warning = str(e)
+        if "Repository not found" in warning:
+            pass
+        else:
+            warnings.warn(str(e))
+        return False
 
 def generate_github_remote(organization, repository_name):
     """Generates remote url"""
@@ -309,6 +320,42 @@ def create_assignment(base_folder, exercise_number):
     
     return True
 
+def get_age_of_file(fp):
+    """Returns the age of a file (last modification) in seconds"""
+    last_modification_time = os.path.getmtime(fp)
+    current_time = time.time()
+    # Return the age
+    return round(current_time - last_modification_time, 0)
+    
+def init_missing_repo_log(log_fp, exercise_number, username):
+    """Initializes a log file of the missing GitHub Classroom files into csv -file. Notice will always overwrite the older one if the file is older than 1 hour."""
+    log = pd.DataFrame([["Exercise-%s" % exercise_number, username]], columns=['Exercise', 'Username'])
+    # Save to file
+    log.to_csv(log_fp, index=False)
+    
+def log_missing_repos(exercise_number, username):
+    """Writes a log file of the missing GitHub Classroom files into csv -file. Notice will always overwrite the older one if the file is older than 1 hour."""
+    # Parse filename
+    log_fp = os.path.join(base_folder, "Exercise_%s_missing_classroom_submissions.csv" % exercise_number)
+    
+    # Check if the log exists
+    if os.path.exists(log_fp):
+        # Check if file is older than 1 hour
+        if not get_age_of_file > 3600:
+            # Read the file
+            log = pd.read_csv(log_fp)
+            
+            # If the student name does not exist add it into the file
+            if not username in log['Username'].values:
+                log = log.append([["Exercise-%s" % exercise_number, username]], ignore_index=True)
+                log.to_csv(log_fp)
+        else:
+            # Initialize the file
+            init_missing_repo_log(log_fp, exercise_number, username)
+    else:
+        # Initialize the file
+        init_missing_repo_log(log_fp, exercise_number, username)
+        
 def main():
     
     # Iterate over exercises if they are defined
@@ -338,15 +385,23 @@ def main():
                 
                 # Update Exercise repository (clone or pull)
                 repo_path = update_course_repo(student_f, organization, user=uname, exercise=enumber)
-            
-                # Change the folder name 
-                if use_nbgrader_style:
-                    # Convert the directory name into format supported by nbgrader
-                    new_path = rename_directory_for_nbgrader(repo_path=repo_path, exercise_number=enumber)
-                    
-                    # Remove .git file on Windows so that it does not conflict with nbgrader
-                    if 'win' in platform:
-                        remove_git_folder(new_path)
+                
+                # Change the folder name if the repo was successfully cloned
+                if repo_path:
+                    if use_nbgrader_style:
+                        # Convert the directory name into format supported by nbgrader
+                        new_path = rename_directory_for_nbgrader(repo_path=repo_path, exercise_number=enumber)
+                        
+                        # Remove .git file on Windows so that it does not conflict with nbgrader
+                        if 'win' in platform:
+                            remove_git_folder(new_path)
+                
+                # If the student's exercise was not found, write a log
+                else:
+                    print("Student", uname, "has not started the Exercise", enumber)
+                    # Log to file
+                    log_missing_repos(enumber, uname)
+                
     
     # Iterate over any other Github Classroom repos if they are defined
     if len(additional_classroom_repos) > 0:

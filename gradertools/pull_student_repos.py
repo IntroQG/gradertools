@@ -341,7 +341,7 @@ def log_missing_repos(exercise_number, username):
     # Check if the log exists
     if os.path.exists(log_fp):
         # Check if file is older than 1 hour
-        if not get_age_of_file > 3600:
+        if not get_age_of_file(log_fp) > 3600:
             # Read the file
             log = pd.read_csv(log_fp)
             

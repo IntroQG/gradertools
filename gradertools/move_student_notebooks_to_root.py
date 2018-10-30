@@ -36,6 +36,30 @@ def get_notebooks(directory):
     fps = glob.glob(os.path.join(directory, '*.ipynb'))
     return fps
 
+def move_data_directory_to_parent(directory_path):
+    """Moves directory to parent folder"""
+    parent_dir = os.path.dirname(os.path.dirname(directory_path))
+    folder_name = os.path.basename(directory_path)
+    
+    # Filenames
+    fnames = os.listdir(directory_path)
+    
+    # Create directory to upper level if it does not exist
+    target_dir = os.path.join(parent_dir, folder_name)
+    if not os.path.exists(target_dir):
+        os.mkdir(target_dir)
+    
+    # Move to folder
+    for fname in fnames:
+        # source path
+        src = os.path.join(directory_path, fname)
+        target = os.path.join(target_dir, fname)
+        try:
+            shutil.copy2(src, target)
+        except:
+            print("[WARNING] Could not move %s" % fname)
+    
+
 def move_notebooks_to_parent(notebooks):
     """Moves a list of notebooks to their parent folder"""
     new_fps = []
@@ -60,10 +84,17 @@ def move_user_notebooks_to_parent(user, exercise_number, etype, na_users):
     if len(nbs) == 0: 
         print("Could not find any notebooks from %s" % src_dir)
         na_users.append(user)
-    
-    # Move notebooks to parent directory
-    new_fps = move_notebooks_to_parent(nbs)
-    return (new_fps, na_users)
+    else:
+        # Move notebooks to parent directory
+        new_fps = move_notebooks_to_parent(nbs)
+        
+        # Move data directory if it can be found
+        data_dir = os.path.join(src_dir, 'data')
+        if os.path.exists(data_dir):
+            print("Moving exercise data directory to root.. ")
+            move_data_directory_to_parent(data_dir)
+        
+        return (new_fps, na_users)
 
 def main():
     

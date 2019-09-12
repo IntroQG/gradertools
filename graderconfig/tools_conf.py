@@ -65,7 +65,7 @@ organization = "Geo-Python-2019"
 autograding_suffix = "-autograding"
 
 # List of GitHub usernames that should be pulled
-user_names = ['saratodorovic', 'VuokkoH']
+user_names = ['saratodorovic', 'VuokkoH', 'hunajaiivari']
     
 # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
 exercise_list = [2]

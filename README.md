@@ -1,7 +1,12 @@
-# Tools for autograding.
+# Tools for autograding
 
 This repository contains a few scripts that helps to manage Geo-Python and AutoGIS Exercises.
-This version is based on the original gradertools developed by Henkka: [url]. This is a simplified version of the original gradertoosl
+This is a simplified version of the original gradertools developed by Henkka: https://github.com/geo-python/gradertools 
+
+what is different compared with the original tool:
+- folder structure (less subfolders)
+- separate steps for pulling student repo and fetching exercise templates
+- no printing to pdf or sending feedback via slack.
 
 ## Contents
 

@@ -16,12 +16,12 @@ Created on Sat Sep 15 19:57:24 2018
 def set_to_path():
     """Set gradertool directories to the path so that configuration works from parent folder"""
     import sys, os
-    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools', 'gradertools', 'graderconfig'))
-    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools', 'gradertools'))
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools', 'graderconfig'))
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gradertools' ))
 
 # Set grader tools to path
 set_to_path()
-from gradertools.gradertools.graderconfig.tools_conf import base_folder, organization
+from gradertools.graderconfig.tools_conf import base_folder, organization
 from get_students_of_assistant import get_course_students
 from get_course_assignments import create_assignments
 

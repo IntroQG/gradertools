@@ -17,8 +17,8 @@ print("======================================\nInitializing gradertools environm
 current_path = os.path.dirname(os.path.realpath(__file__))
 parent_path = os.path.dirname(current_path)
 
-# Copy the nbgrader configuration file to the parent directory
-nbgrader_config = os.path.join(current_path, 'gradertools', 'graderconfig', 'nbgrader_config.py')
+# Copy the nbgrader configuration file to the parent directory (one level up from the gradertools repo!)
+nbgrader_config = os.path.join(current_path, 'graderconfig', 'nbgrader_config.py')
 target_path = os.path.join(parent_path, 'nbgrader_config.py')
 
 if not os.path.exists(target_path):
@@ -56,21 +56,7 @@ try:
     print("Jinja2 installed: [ok]")
 except:
     failed_tests.append("Jinja2 Python package is not installed. You need to install it first:\n\nconda install -c conda-forge jinja2")
-try:
-    import pdfkit
-    print("pdfkit installed: [ok]")
-    # If pdfkit is installed test if wkhtmltopdf package works 
-    try:
-        # Try to produce pdf with pdfkit to test if wkhtmltopdf package works and is in the system path
-        test_html = os.path.join(current_path, 'gradertools', 'testdata', 'test_feedback.html')
-        test_pdf = os.path.join(current_path, 'gradertools', 'testdata', 'test_feedback.pdf')
-        
-        import pdfkit
-        pdfkit.from_file(test_html, test_pdf)
-        # Remove test pdf
-        os.remove(test_pdf)
-    except:
-        failed_tests.append("wkhtmltopdf software is not installed. You need to install it first by downloading it from:\n\nhttps://wkhtmltopdf.org/downloads.html\n\nYou also need to insert the `../wkhtmltopdf/bin` folder to system path.")
+
 except:
     failed_tests.append("pdfkit Python package is not installed. You need to install it first:\n\pip install pdfkit")
 if len(failed_tests) > 0:

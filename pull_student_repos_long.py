@@ -21,9 +21,6 @@ Notes:
 Created on Wed Jan 11 13:55:44 2017
 
 @author: hentenka
-
-Modified on  Wed Sept 11 2019 by Vuokko (removed actions related to autograding and focused this script on pulling student exercises).
-
 """
 
 from git import Repo
@@ -73,7 +70,6 @@ def create_student_folder(base_f, uname):
         os.mkdir(student_f)
     return student_f
 
-
 def is_git_repo(directory):
     """Validates if directory is Git repository"""
     try:
@@ -85,7 +81,30 @@ def is_git_repo(directory):
     # If directory does not exist
     except git.exc.NoSuchPathError:
         return False
+    
+def is_classroom_source(repo, exercise):
+    """Validates if repository is an actual remote for the Exercise source files. Returns the remote if it is."""
+    # Check remotes
+    url = repo.remotes.origin.url
+    # Validate 
+    split = url.split('/')
+    assert split[-2] == organization, "Organization of the remote does not match with the project!"
+    if split[-1] == "Exercise-%s%s.git" % (exercise, autograding_suffix):
+        return True
+    else:
+        return False
 
+def is_classroom_release(repo, exercise):
+    """Validates if repository is an actual remote for the Exercise release files. Returns the remote if it is."""
+    # Check remotes
+    url = repo.remotes.origin.url
+    # Validate 
+    split = url.split('/')
+    assert split[-2] == organization, "Organization of the remote does not match with the project!"
+    if split[-1] == "Exercise-%s.git" % (exercise):
+        return True
+    else:
+        return False
 
 def is_student_classroom(repo, user, exercise):
     """Validates if repository is an actual remote for the Exercise source files. Returns the remote if it is."""
@@ -99,7 +118,58 @@ def is_student_classroom(repo, user, exercise):
     else:
         return False
 
-
+def update_autograding_source_repo(base_folder, enumber):
+    """Clones / pulls the autograding source files"""
+    # Create the folder for sources
+    source_dir, exercise_dir = create_source_exercise_folder(base_folder, enumber)
+    
+    # Check if exercise repository is initialized
+    if is_git_repo(exercise_dir):
+        # Get the repo
+        repo = Repo(exercise_dir)
+        
+        # Check if remote points to the Exercise-3
+        if is_classroom_source(repo, enumber):
+            # Pull changes
+            print("Updating Exercise source files")
+            pull_repo(repo, repo.remotes.origin.url)
+        else:
+            raise ValueError("%s directory contains something else than the source files of Exercise-%s. Please check and ensure that the directory contains valid materials.\nRemote: %s" % (exercise_dir, enumber, repo.remotes.origin.url))
+    # If not clone it
+    else:
+        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s%s" % (enumber, autograding_suffix)), repo_path=exercise_dir)
+        
+def update_autograding_release_repo(base_folder, enumber):
+    """Clones / pulls the autograding release files"""
+    # Create the folder for released Exercises
+    release_dir, exercise_dir = create_release_exercise_folder(base_folder, enumber)
+    print("Updating Exercise release files ..")
+    # Check if exercise repository is initialized
+    if is_git_repo(exercise_dir):
+        # Get the repo
+        repo = Repo(exercise_dir)
+        
+        # Check if remote points to the Exercise-3
+        if is_classroom_release(repo, enumber):
+            # Pull changes
+            pull_repo(repo, repo.remotes.origin.url)
+        else:
+            # If the repo points to Classroom Source files replace it with released version
+            if is_classroom_source(repo, enumber):
+                print("Directory pointed to source files..updating to release files..")
+                # Remove contents 
+                remove_git_folder(exercise_dir)
+                shutil.rmtree(exercise_dir)
+                
+                # Update with the release version of the Exercise
+                git_clone(generate_github_remote(organization, "Exercise-%s" % (enumber)), exercise_dir)
+                
+            else:
+                raise ValueError("%s directory contains something else than the release files of Exercise-%s. Please check and ensure that the directory contains valid materials." % (exercise_dir, enumber))
+    # If not clone it
+    else:
+        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s" % (enumber)), repo_path=exercise_dir)
+        
 def update_course_repo(student_folder, organization, user=None, exercise=None):
     """Update course repository from GitHub"""
     
@@ -128,7 +198,7 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
                 print("Updating Exercise files of %s" % url)
                 pull_repo(repo, url)
             else:
-                raise ValueError("%s directory contains something else than the student files for Exercise-%s. Please check and ensure that the directory contains valid materials." % (repo_path, exercise))
+                raise ValueError("%s directory contains something else than the studnet files for Exercise-%s. Please check and ensure that the directory contains valid materials." % (repo_path, exercise))
                 
     else:
         # If repository has not been cloned yet
@@ -165,6 +235,35 @@ def create_submitted_folder(base_f):
         os.mkdir(submitted_f)
     return submitted_f
 
+def create_source_exercise_folder(base_f, exercise_num):
+    """Creates a submitted folder if it does not exist."""
+    # Source
+    source_f = os.path.join(base_f, "source")
+    exercise_f = os.path.join(source_f, "Exercise-%s" % exercise_num)
+    
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(source_f):
+        os.mkdir(source_f)
+        
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(exercise_f):
+        os.mkdir(exercise_f)
+    return (source_f, exercise_f)
+
+def create_release_exercise_folder(base_f, exercise_num):
+    """Creates a release folder if it does not exist."""
+    # Source
+    release_f = os.path.join(base_f, "release")
+    exercise_f = os.path.join(release_f, "Exercise-%s" % exercise_num)
+    
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(release_f):
+        os.mkdir(release_f)
+        
+    # Check if the folder exists, if not create one
+    if not os.path.isdir(exercise_f):
+        os.mkdir(exercise_f)
+    return (release_f, exercise_f)
 
 def rename_directory_for_nbgrader(repo_path, exercise_number):
     """Renames the GitHub Classroom directory name to format supported by NBgrader"""
@@ -198,11 +297,9 @@ def git_clone(github_remote, repo_path):
             warnings.warn(str(e))
         return False
 
-
 def generate_github_remote(organization, repository_name):
     """Generates remote url"""
     return 'https://github.com/%s/%s.git' % (organization, repository_name)
-
 
 def add_assignment(base_folder, exercise_number):
     """Adds assignment """
@@ -213,6 +310,15 @@ def add_assignment(base_folder, exercise_number):
     subprocess.call([ "nbgrader", "db", "assignment", "add", "%s" % assignment], cwd=base_folder)
     return True
 
+def create_assignment(base_folder, exercise_number):
+    """Creates nbgrader assignment (adds it into the grading database)."""
+    # Assignment name
+    assignment = "Exercise-%s" % exercise_number
+    
+    print("Assign %s" % (assignment))
+    subprocess.call([ "nbgrader", "assign", assignment], cwd=base_folder)
+    
+    return True
 
 def get_age_of_file(fp):
     """Returns the age of a file (last modification) in seconds"""
@@ -220,14 +326,12 @@ def get_age_of_file(fp):
     current_time = time.time()
     # Return the age
     return round(current_time - last_modification_time, 0)
-
     
 def init_missing_repo_log(log_fp, exercise_number, username):
     """Initializes a log file of the missing GitHub Classroom files into csv -file. Notice will always overwrite the older one if the file is older than 1 hour."""
     log = pd.DataFrame([["Exercise-%s" % exercise_number, username]], columns=['Exercise', 'Username'])
     # Save to file
     log.to_csv(log_fp, index=False)
-
     
 def log_missing_repos(exercise_number, username):
     """Writes a log file of the missing GitHub Classroom files into csv -file. Notice will always overwrite the older one if the file is older than 1 hour."""
@@ -251,15 +355,23 @@ def log_missing_repos(exercise_number, username):
     else:
         # Initialize the file
         init_missing_repo_log(log_fp, exercise_number, username)
-
-
+        
 def main():
     
     # Iterate over exercises if they are defined
     if len(exercise_list) > 0:
     
         for enumber in exercise_list:
-
+            
+            # Create Assignment
+            added = add_assignment(base_folder, enumber)
+            
+            # Clone / pull the autograding repository from GitHub if it does not exist
+            update_autograding_source_repo(base_folder, enumber)
+            
+            # Add release files ('nbgrader assign')
+            assigned = create_assignment(base_folder, enumber)
+            
             # Create submitted folder if it does not exist
             submitted_f = create_submitted_folder(base_folder)
             
@@ -284,11 +396,11 @@ def main():
                         if 'win' in platform:
                             remove_git_folder(new_path)
                 
-                # If the student's exercise was not found, print info to screen
+                # If the student's exercise was not found, write a log
                 else:
                     print("Student", uname, "has not started the Exercise", enumber)
                     # Log to file
-                    # log_missing_repos(enumber, uname)
+                    log_missing_repos(enumber, uname)
                 
     
     # Iterate over any other Github Classroom repos if they are defined

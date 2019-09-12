@@ -1,6 +1,7 @@
-# Tools
+# Tools for autograding.
 
 This repository contains a few scripts that helps to manage Geo-Python and AutoGIS Exercises.
+This version is based on the original gradertools developed by Henkka: [url]. This is a simplified version of the original gradertoosl
 
 ## Contents
 
@@ -29,29 +30,14 @@ The tools requires a few packages that needs to be installed before using them.
     - ```$ conda install -c conda-forge gitpython```
 
  - [**nbgrader**](https://nbgrader.readthedocs.io/en/stable/) is essential for automatic grading and you can install it with conda:
+    *check that you get nbgrader 0.6.0!*
 
     - `$ conda install -c conda-forge nbgrader`
 
- - [**slackclient**](https://slackapi.github.io/python-slackclient/) is essential for sending feedback automatically via Slack:
 
-    - `$ conda install -c conda-forge slackclient`
+## Folder structure
 
- -  [**jinja2**](http://jinja.pocoo.org/docs/2.10/) (merges html files), should come with Anaconda but if not, install:
-
-    - `conda install -c conda-forge jinja2`
-
- - [**python-pdfkit**](https://github.com/JazzCore/python-pdfkit) package:
-
-    - Windows:
-
-       - `pip install pdfkit` (conda version has some conflicts at least for me)
-       - You also need to install *Wkhtmltppdf* package before pdfkit starts working (complicated, but let's live with this for now):
-          - [download page](https://wkhtmltopdf.org/downloads.html)
-          - After installing *wkhtmltopdf*, you need to add the `bin/` folder to system environment path (ask help if you don't know how)
-
-    - Mac / Linux (not tested)
-
-        - `conda install -c conda-forge python-pdfkit`
+TODO: Explain folder structure
 
 ## Setting up things for the first time
 
@@ -62,15 +48,15 @@ This can be for example (as set in these scripts):
 
  ```
  # Base folder
- C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+ C:\HY-DATA\...\Geo-Python\autograding-2019
  ```
 
 When you have created the base folder for your exercises, you **need to clone this `gradertools` repository** into the base folder:
 
  ```
- $ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+ $ cd C:\HY-DATA\...\Geo-Python\gradertools
 
- $ git clone https://github.com/geo-python/gradertools
+ $ git clone https://github.com/geo-python-2019/gradertools
 
  ```
 
@@ -91,7 +77,7 @@ After this initiliazing step, you are ready to start using the tools below (sepa
 
 ### Overview
 
-[gradertools/pull_student_repos.py](gradertools/pull_student_repos.py) is a script that helps to pull multiple repositories for specified students.
+[gradertools/pull_student_repos.py](pull_student_repos_long.py) is a script that helps to pull multiple repositories for specified students.
 It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
 Compliance with NBgrader  requires a few special tricks (done automatically by the tool):
 
@@ -103,21 +89,21 @@ Compliance with NBgrader  requires a few special tricks (done automatically by t
 
 ### Configuration
 
-The tool is managed from [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py) file, where you can specify all the required parameters, such as:
+The tool is managed from [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py) file, where you can specify all the required parameters, such as:
 
 ```python
 
   # GitHub Organization where the exercises will be stored
-  organization = "Geo-Python-2018"
+  organization = "Geo-Python-2019"
 
   # Suffix for source repository for autograded Exercises
   autograding_suffix = "-autograding"
 
   # List of GitHub usernames that should be pulled (e.g. ['htenkanen', 'VuokkoH', 'davewhipp']
-  user_names = ['htenkanen']
+  user_names = ['VuokkoH', 'saratodorovic']
 
   # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
-  exercise_list = [3]
+  exercise_list = [1,2]
 
   # Additional Classroom repos (e.g. ['final-assignment'])
   additional_classroom_repos = []
@@ -129,20 +115,22 @@ The tool is managed from [gradertools/graderconfig/tools_conf.py](gradertools/gr
   use_nbgrader_style = True
 
   # Generate pdf from the feedback
-  generate_pdf = True
+  generate_pdf = False # disabled!
 ```  
+
+## OLD DOCS BELOW : UPDATE!
 
 ### How to run?
 
-This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
+This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
 
 After you have configured everything (see above), you can run the tool from terminal or command prompt.
 
 Run the tool with command:
 
 ```
-$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018\gradertools\gradertools
-$ python pull_student_repos.py
+$ cd C:\...\gradertools
+$ python pull_student_repos_simpl.py
 ```
 
 ## Grading student assignments
@@ -211,7 +199,7 @@ That's it! This is the basic workflow for grading the students exercises with nb
 ## Generate feedback reports
 
 Once you have done grading, it is time to generate feedback reports for the students.
-For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](gradertools/generate_feedback.py)
+For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](generate_feedback.py)
 that automates the process. What this tools does:
 
  - It triggers nbgrader's feedback functionality, i.e. `$ nbgrader feedback ...` that produces feedback html files into `feedback` folder.
@@ -222,7 +210,7 @@ that automates the process. What this tools does:
 
 It is straightforward.
 The tool uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
-If you still need to do some changes you can configure this from [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py).
+If you still need to do some changes you can configure this from [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py).
 There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building (if pdfkit does not work, you might want to disable this):
 
 ```python
@@ -242,7 +230,7 @@ Final step after grading and generating the feedback reports, is to share those 
 This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
 via that as Slack is providing an API that fits nicely for this purpose!
 
-[gradertools/send_feedback.py](gradertools/send_feedback.py) script will automate the sending of feedbacks.
+[gradertools/send_feedback.py](send_feedback.py) script will automate the sending of feedbacks.
 Again we control this process from configuration files as demonstrated below.
 
 ### Configuring Slack
@@ -265,7 +253,7 @@ There are a few parameters in configuration file and
 one CSV-file ([data/Geopy_Autogis_students_with_Slack_info.csv](data/Geopy_Autogis_students_with_Slack_info.csv)) that are crucial for this tool to work.
 The CSV-file contains information about the students GitHub usernames, and their Slack-userid's etc,
 that are needed communicate to students.
-You can configure the parameters from the [gradertools/graderconfig/tools_conf.py](gradertools/graderconfig/tools_conf.py) as shown below (example).
+You can configure the parameters from the [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py) as shown below (example).
 
 ```
 # ===============================

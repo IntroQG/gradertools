@@ -59,7 +59,7 @@ This can be for example (as set in these scripts):
 When you have created the base folder for your exercises, you **need to clone this `gradertools` repository** into the base folder:
 
  ```
- $ cd C:\HY-DATA\...\Geo-Python\gradertools
+ $ cd C:\HY-DATA\...\Geo-Python\autograding-2019
 
  $ git clone https://github.com/geo-python-2019/gradertools
 
@@ -67,6 +67,8 @@ When you have created the base folder for your exercises, you **need to clone th
 
 
 After you have created that folder, go into it in terminal or command line and **initilize the nbgrader for the first time** by running [init_gradertools.py](init_gradertools.py) (you only need to do this once when using the environment for the very first time!):
+
+Navigate to folder C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools that you just cloned:
 
  ```bash
  $ cd gradertools
@@ -131,12 +133,14 @@ This tool will create a folder structure that is aimed for the use of nbgrader. 
 
 After you have configured everything (see above), you can run the tool from terminal or command prompt.
 
-Run the tool with command:
+Run the tool with command in the gradertools-folder:
 
 ```
-$ cd C:\...\gradertools
-$ python pull_student_repos_simpl.py
+$ cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
+$ python pull_student_reposl.py
 ```
+
+*Note: pull student repos pulls the student repos to subfolders in \autograding-2019\submitted\ ! Folder "submitted" is created if it does not exits*
 
 ## Grading student assignments
 
@@ -147,7 +151,7 @@ Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can 
 You can start nbgrader from command line. You should first navigate to the base-folder that you defined in the [initial step above](#setting-up-things-for-the-first-time).
 
 ```
-$ cd C:\HY-DATA\HENTENKA\KOODIT\Opetus\Geo-Python\Exercises-2018
+$ cd C:\HY-DATA\...\Geo-Python\autograding-2019
 
 $ jupyter notebook
 ```

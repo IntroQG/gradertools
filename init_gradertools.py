@@ -57,8 +57,6 @@ try:
 except:
     failed_tests.append("Jinja2 Python package is not installed. You need to install it first:\n\nconda install -c conda-forge jinja2")
 
-except:
-    failed_tests.append("pdfkit Python package is not installed. You need to install it first:\n\pip install pdfkit")
 if len(failed_tests) > 0:
     for failed in failed_tests:
         print("\n\n==================\nERRORS:", failed + "\n")

@@ -179,6 +179,16 @@ def remove_git_folder(repo_path):
     os.system('rmdir /S /Q "{}"'.format(git_dir)) 
     print("Removed .git file so it does not conflict with nbgrader.")
     
+def fix_git_perms(repo_path):
+    """Git directory has files with read-only permissions that cause trouble with nbgrader. This fixes that issue."""
+    git_dir = os.path.join(repo_path, ".git")
+    for root, dirs, files in os.walk(git_dir):
+        for d in dirs:
+            os.chmod(os.path.join(root, d), 0o755)
+        for f in files:
+            os.chmod(os.path.join(root, f), 0o644)
+    print("Setting appropriate git directory permissions for nbgrader.")
+    
 def remove_normal_directory(folder_path):
     """Removes a folder if it exists"""
     if os.path.exists(folder_path):
@@ -282,7 +292,8 @@ def main():
                         
                         # Remove .git file on Windows so that it does not conflict with nbgrader
                         if 'win' in platform:
-                            remove_git_folder(new_path)
+                            #remove_git_folder(new_path)
+                            fix_git_perms(new_path)
                 
                 # If the student's exercise was not found, print info to screen
                 else:

@@ -8,6 +8,18 @@ what is different compared with the original tool:
 - separate steps for pulling student repo and fetching exercise templates
 - no printing to pdf or sending feedback via slack.
 
+## Workflow
+
+Basic workflow consists of the following steps:
+1. Change settings in the config -file (list of students, and list of exercises)
+2. Pull student repos
+3. Update exercise templates
+4. do the autograding using the Jupyter Notebook / nbgrader GUI
+5. Check submissions manually if needed and add written feedback
+6. Provide feedback to students
+
+If using this tool for the first time, check the requirements, and instructions on how to set things up for the first time below.
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -32,17 +44,30 @@ The tools requires a few packages that needs to be installed before using them.
 
  - [**gitpython**](https://gitpython.readthedocs.io/en/stable/) package:
 
-    - ```$ conda install -c conda-forge gitpython```
+    ```conda install -c conda-forge gitpython```
 
  - [**nbgrader**](https://nbgrader.readthedocs.io/en/stable/) is essential for automatic grading and you can install it with conda:
     *check that you get nbgrader 0.6.0!*
 
-    - `$ conda install -c conda-forge nbgrader`
+        ```conda install jupyter```
+        
+        ```conda install -c conda-forge nbgrader```
+
 
 
 ## Folder structure
 
-TODO: Explain folder structure
+```
+───autograding-2019         # create this folder yourself! Start Jupyter notebooks in this folder
+   ├───gradertools          # Tools repository cloned from GitHub. Run all Pyton tools in here.
+   │   ├───graderconfig     # configureation files
+   └───submitted            # this folder get's created when pulling student repos
+       ├───saratodorovic
+       │   └───Exercise-2   # When pulling new st
+       └───VuokkoH
+           └───Exercise-2
+
+```
 
 ## Setting up things for the first time
 

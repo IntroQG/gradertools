@@ -267,6 +267,4 @@ Final step after grading and generating the feedback reports, is to share those 
 This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
 via that as Slack is providing an API that fits nicely for this purpose!
 
-[gradertools/send_feedback.py](send_feedback.py) script will automate the sending of feedbacks.
-Again we control this process from configuration files as demonstrated below.
 

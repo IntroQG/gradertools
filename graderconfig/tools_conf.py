@@ -66,7 +66,35 @@ autograding_suffix = "-autograding"
 
 # List of GitHub usernames that should be pulled
 user_names = ['saratodorovic', 'VuokkoH', 'hunajaiivari']
-    
+
+"""
+user_names = ['hcjonna',
+		'outisepp',
+		'liisama',
+		'marsiren',
+		'SusannaTon',
+		'Emmachatain',
+		'annvil',
+		'yangming2019',
+		'ilpotuomisto',
+		'g-cramberry',
+		'jaakkopuntalo',
+		'Samu1303',
+		'jonnava',
+		'roopekarhu',
+		'RoopeNiemi',
+		'jjsilven',
+		'lissukka',
+		'Geodude192',
+		'vjhmalainen',
+		'TheTulokas',
+		'suvierhovaara',
+		'lottabee',
+		'kaemri',
+		'sannitii',
+		'jeresv']
+		"""
+
 # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
 exercise_list = [2]
     

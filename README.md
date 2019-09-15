@@ -49,20 +49,26 @@ The tools requires a few packages that needs to be installed before using them.
 
  - [**nbgrader**](https://nbgrader.readthedocs.io/en/stable/) is essential for automatic grading and you can install it with conda:
     *check that you get nbgrader 0.6.0!*
-
-        ```conda install jupyter```
-        
-        ```conda install -c conda-forge nbgrader```
+    
+    ```
+    conda install jupyter
+    conda install -c conda-forge nbgrader
+           
+    ```
 
 ## Folder structure
 
 ```
-───autograding-2019         # Create this folder yourself! Always start Jupyter Notebooks + nbgrader in this folder
-   ├───gradertools          # Tools repository cloned from GitHub. Run Python scripts from this folder
-   │   ├───graderconfig     # configureation files
-   └───submitted            # this folder get's created when pulling student repos
+───autograding-2019               # Create this folder yourself! Always start Jupyter Notebooks + nbgrader in this folder
+   ├───gradertools                # Tools repository cloned from GitHub. 
+   │   ├───graderconfig           # Configuration files. Set list of students and exercises in tools_conf.py in here.
+   ├───release                    # Student version of exercises.
+   │   └───Exercise-2
+   ├───source                     # Teacher's versions of exercises with hidden tests etc.
+   │   └───Exercise-2
+   └───submitted                  # Student's submissions
        ├───saratodorovic
-       │   └───Exercise-2   # When pulling new st
+       │   └───Exercise-2         
        └───VuokkoH
            └───Exercise-2
 

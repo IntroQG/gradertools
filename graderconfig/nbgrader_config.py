@@ -11,6 +11,8 @@ In here you can modify how nbgrader works:
 Created on Sat Sep 15 19:57:24 2018
 
 @author: Henrikki Tenkanen
+
+Updated Sept 15 2019 by vuokko (NOT ALL COMMENTS ARE UPDATED!)
 """
 
 def set_to_path():
@@ -22,7 +24,7 @@ def set_to_path():
 # Set grader tools to path
 set_to_path()
 from gradertools.graderconfig.tools_conf import base_folder, organization
-from get_students_of_assistant import get_course_students
+#from get_students_of_assistant import get_course_students
 from get_course_assignments import create_assignments
 
 c = get_config()
@@ -33,7 +35,7 @@ c = get_config()
 
 # You only need this if you are running nbgrader on a shared
 # server set up.
-c.Exchange.course_id = organization
+c.CourseDirectory.course_id = organization
 
 ## The root directory for the course files (that includes the `source`,
 #  `release`, `submitted`, `autograded`, etc. directories). Defaults to the
@@ -41,16 +43,16 @@ c.Exchange.course_id = organization
 c.CourseDirectory.root = base_folder
 
 # The directory for release
-c.Exchange.course_id = organization
-c.Exchange.root = base_folder
+c.CourseDirectory.course_id = organization
+c.CourseDirectory.root = base_folder
 
 # Whether to create the assignment at runtime if it does not already exist.
-c.Assign.create_assignment = True
+c.GenerateAssignment.create_assignment = True
 
 # Change the students in this list with that actual students in
 # your course
 
-c.CourseDirectory.db_students = get_course_students()
+#c.CourseDirectory.db_students = get_course_students()
 #print(c.CourseDirectory.db_students)
     
 # The code snippet that will replace code solutions

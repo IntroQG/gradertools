@@ -291,13 +291,14 @@ def main():
                         new_path = rename_directory_for_nbgrader(repo_path=repo_path, exercise_number=enumber)
                         
                         # Remove .git file on Windows so that it does not conflict with nbgrader
+
                         if 'win' in platform:
                             #remove_git_folder(new_path)
                             fix_git_perms(new_path)
                 
                 # If the student's exercise was not found, print info to screen
                 else:
-                    print("Student", uname, "has not started the Exercise", enumber)
+                    print("Could not clone student repository. Student", uname, "has probably not started the Exercise.", enumber)
                     # Log to file
                     # log_missing_repos(enumber, uname)
                 

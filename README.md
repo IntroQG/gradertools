@@ -58,6 +58,10 @@ The tools requires a few packages that needs to be installed before using them.
 
 ## Folder structure
 
+Nbgrader makes a couple of assumptions about how organize the assignment files. Read more about the nbgrader philosophy in [here](https://nbgrader.readthedocs.io/en/stable/user_guide/philosophy.html). 
+
+All you need to do when starting is to create a root folder (eg. `autograding-2019` and clone this repository (`gradertools`) in there. When running the grading tools, they automatically create the folders `release`, `source` and `submitted` if they don't exists. 
+
 ```
 ───autograding-2019               # Create this folder yourself! Always start Jupyter Notebooks + nbgrader in this folder
    ├───gradertools                # Tools repository cloned from GitHub. 

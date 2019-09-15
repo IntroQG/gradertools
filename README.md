@@ -11,10 +11,11 @@ what is different compared with the original tool:
 ## Workflow
 
 Basic workflow consists of the following steps:
-1. Change settings in the config -file (list of students, and list of exercises)
-2. Pull student repos
-3. Update exercise templates
-4. do the autograding using the Jupyter Notebook / nbgrader GUI
+1. Change settings in the `gradertools/graderconfig/tools_conf.py` -file (list of students, and list of exercises)
+2. Pull student repos using `gradertools/pull_student_repos.py`
+3. Pull exercise templates using `gradertools/pull_exercise_repos.py`
+4. Open Jupyter Notebook + nbgrader (run `jupyter notebook` on command line in the root-folder)
+5. Do the autograding in the formgrader (press the lightning-button for each student)
 5. Check submissions manually if needed and add written feedback
 6. Provide feedback to students
 
@@ -53,13 +54,11 @@ The tools requires a few packages that needs to be installed before using them.
         
         ```conda install -c conda-forge nbgrader```
 
-
-
 ## Folder structure
 
 ```
-───autograding-2019         # create this folder yourself! Start Jupyter notebooks in this folder
-   ├───gradertools          # Tools repository cloned from GitHub. Run all Pyton tools in here.
+───autograding-2019         # Create this folder yourself! Always start Jupyter Notebooks + nbgrader in this folder
+   ├───gradertools          # Tools repository cloned from GitHub. Run Python scripts from this folder
    │   ├───graderconfig     # configureation files
    └───submitted            # this folder get's created when pulling student repos
        ├───saratodorovic
@@ -115,7 +114,7 @@ Compliance with NBgrader  requires a few special tricks (done automatically by t
 
  - Student repositories will be stored in folder called `submitted`
  - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
- - On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
+ - OUTDATED: On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
     - this is okay, it is not needed to push any changes to the repo
     - if for some reason there is a need to push some changes to that repository, [push_changes_.py]() script can be used to do that (or doing it manually by adding a remote with git commands)
 
@@ -135,7 +134,7 @@ The tool is managed from [gradertools/graderconfig/tools_conf.py](graderconfig/t
   user_names = ['VuokkoH', 'saratodorovic']
 
   # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
-  exercise_list = [1,2]
+  exercise_list = [2,3]
 
   # Additional Classroom repos (e.g. ['final-assignment'])
   additional_classroom_repos = []

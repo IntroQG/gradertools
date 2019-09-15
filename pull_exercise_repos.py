@@ -30,7 +30,7 @@ import os
 import shutil
 from sys import platform
 import subprocess
-from graderconfig.tools_conf import base_folder, organization, user_names, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
+from graderconfig.tools_conf import base_folder, organization, exercise_list, additional_classroom_repos, extra_repos, use_nbgrader_style, autograding_suffix
 from util import get_source_notebook_files
 import time
 import warnings

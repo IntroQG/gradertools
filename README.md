@@ -232,6 +232,8 @@ That's it! This is the basic workflow for grading the students exercises with nb
 
 ## Generate feedback reports
 
+** TO DO : REMOVE PDF BUILDING IF NOT REALLY NEEDED**
+
 Once you have done grading, it is time to generate feedback reports for the students.
 For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](generate_feedback.py)
 that automates the process. What this tools does:
@@ -258,7 +260,9 @@ After configuring you can run the tool from command line (you need to be in the 
 $ python generate_feedback.py
 ```
 
-## Send feedback reports to students in Slack
+## Send feedback reports to students in GitHub
+
+**TO DO: UPDATE DOCS FOR SLACK FEEDBACK**
 
 Final step after grading and generating the feedback reports, is to share those reports to students.
 This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
@@ -266,72 +270,4 @@ via that as Slack is providing an API that fits nicely for this purpose!
 
 [gradertools/send_feedback.py](send_feedback.py) script will automate the sending of feedbacks.
 Again we control this process from configuration files as demonstrated below.
-
-### Configuring Slack
-
-Before you can start to use the tool, you need to create **`slack_conf.py`** configuration file in the same folder where **send_feedback.py** file is located. The file should contain the token for Slack API that makes it possible
-to send messages automatically. You need to add the token to that file (ask the token from Henrikki), edit the file in following way:
-
-```python
-"""
-slack_conf.py
-Configuration file for Slack API.
-"""
-
-slack_token = "ReplaceThisWithCorrectSlackToken"
-```
-
-### Configuring the feedback sending procedures
-
-There are a few parameters in configuration file and
-one CSV-file ([data/Geopy_Autogis_students_with_Slack_info.csv](data/Geopy_Autogis_students_with_Slack_info.csv)) that are crucial for this tool to work.
-The CSV-file contains information about the students GitHub usernames, and their Slack-userid's etc,
-that are needed communicate to students.
-You can configure the parameters from the [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py) as shown below (example).
-
-```
-# ===============================
-# Exercise / Classroom parameters
-# ===============================
-
-# Inspector (the GitHub username of assistant/instructor)
-inspector_user_name = 'htenkanen'
-
-# ===================
-# Feedback parameters
-# ===================
-
-# Send feedback to Slack (True / False)
-send_to_slack = True
-
-# Send feedback to GitHub (True / False)
-send_to_github = True
-
-# ===============================
-# Student information parameters
-# ===============================
-
-# File containing the student info (e.g. Slack info + GitHub usernames)
-student_info_filename = "Geopy_Autogis_students_with_Slack_info.csv"
-
-# You can manually specify path to 'student_info_file' below if needed. The 'gradertools/data' -folder is the default location for student information
-data_dir = get_data_directory_path()
-student_info_file = os.path.join(data_dir, student_info_filename)
-
-# Required column names
-github_username_column = 'Githubname'
-name_column = 'Name'
-slack_id_column = 'id'
-slack_display_name_column = 'display_name'
-
-```
-
-### How to run the tool?
-
-After configuring you can run the tool from command line (you need to be in the directory where the Python file is located):
-
-``` $ python send_feedback.py```
-
-
-
 

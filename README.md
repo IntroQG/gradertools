@@ -93,40 +93,38 @@ This can be for example (as set in these scripts):
 When you have created the base folder for your exercises, you **need to clone this `gradertools` repository** into the base folder:
 
  ```
- $ cd C:\HY-DATA\...\Geo-Python\autograding-2019
+ cd C:\HY-DATA\...\Geo-Python\autograding-2019
 
- $ git clone https://github.com/geo-python-2019/gradertools
+ git clone https://github.com/geo-python-2019/gradertools
 
  ```
 
 
-After you have created that folder, go into it in terminal or command line and **initilize the nbgrader for the first time** by running [init_gradertools.py](init_gradertools.py) (you only need to do this once when using the environment for the very first time!):
+After you have succesfully cloned the repository, you can **initilize the nbgrader for the first time** 
+by running [init_gradertools.py](init_gradertools.py) (you only need to do this once when using the environment for the very first time!).
 
-Navigate to folder C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools that you just cloned:
+You can run the tool directly from the root folder (one level up from the gradertools-repo):
 
- ```bash
- $ cd gradertools
- $ python init_gradertools.py
+ ```
+ python gradertools/init_gradertools.py
+ 
+ ```
+
+OR you can navigate to the gradertools repo that you just cloned and run `init_gradertools.py`:
+
+ ```
+ 
+ cd gradertools
+ python init_gradertools.py
+ 
  ```
 
 This will run some tests and initialize your grading environment. If everything is okay, the program will say that you are good to go,
 otherwise it will give you hints about what you need to do, to get things working. You need to do this step only once.
 
-After this initiliazing step, you are ready to start using the tools below (separate instructions for each of them).
+After this step, you are ready to start pulling student repos and start grading the exercises (separate instructions below)!
 
 ## Automate pulling repos
-
-### Overview
-
-[gradertools/pull_student_repos.py](pull_exercise_repos.py) is a script that helps to pull multiple repositories for specified students.
-It also manages everything in a way that the student repositories can be automatically graded with NBgrader. 
-Compliance with NBgrader  requires a few special tricks (done automatically by the tool):
-
- - Student repositories will be stored in folder called `submitted`
- - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
- - OUTDATED: On Windows, the .git folder needs to be removed because it conflicts with the automatic grading 
-    - this is okay, it is not needed to push any changes to the repo
-    - if for some reason there is a need to push some changes to that repository, [push_changes_.py]() script can be used to do that (or doing it manually by adding a remote with git commands)
 
 ### Configuration
 
@@ -159,40 +157,75 @@ The tool is managed from [gradertools/graderconfig/tools_conf.py](graderconfig/t
   generate_pdf = False # disabled!
 ```  
 
-## OLD DOCS BELOW : UPDATE!
+### Pull student repos
+
+[gradertools/pull_student_repos.py](pull_exercise_repos.py) is a script that helps to pull multiple repositories for specified students.
+It also manages everything in a way that the student repositories can be automatically graded with NBgrader (renames folders etc.). 
+Compliance with NBgrader  requires a few special tricks (done automatically by the tool):
+
+ - This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
+ - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
+ - On Windows computers, the tool sets file permissions related to `.git` (otherwise nbgrader will throw an error)
+ 
 
 ### How to run?
 
-This tool will create a folder structure that is aimed for the use of nbgrader. The structure will be organized around a root directory (which you need to specify in [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py), which is where subfolders are going to be created according nbgrader's needs. This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
+After you have configured everything in the ``tools_conf.py`` file (see above), you can run the tool from terminal or command prompt.
 
-After you have configured everything (see above), you can run the tool from terminal or command prompt.
-
-Run the tool with command in the gradertools-folder:
+Run the tool from the root-folder:
 
 ```
-$ cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
-$ python pull_student_reposl.py
+python gradertools\pull_student_repos.py
+```
+
+OR from the gradertools-folder:
+
+```
+cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
+python pull_student_repos.py
 ```
 
 *Note: pull student repos pulls the student repos to subfolders in \autograding-2019\submitted\ ! Folder "submitted" is created if it does not exits*
 
+
+### Pull exercise repos
+
+
+ - This tool will create folders called `source` and `release` for the exercise templates if they don't exist.
+ - The tool clones the autograding repository for assignments listed in `tools_conf.py` into `source`-folder and generates the student version into `release` folder
+ - autograding repositories are renamed from `exercise-3-username` to `Exercise-3` in order to match the template with student submissions 
+
+```
+python gradertools\pull_exercise_repos.py
+```
+
+OR from the gradertools-folder:
+
+```
+cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
+python pull_exercise_repos.py
+```
+
 ## Grading student assignments
 
-Once, you have pulled GitHub repositories with `pull_student_repos.py`, you can autograde them using nbgrader. Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc.
+Once, you have pulled GitHub repositories using `pull_student_repos.py` and `pull_exercise_repos.py`, you can autograde them using nbgrader. 
+Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc.
 
 ### Start Nbgrader
 
-You can start nbgrader from command line. You should first navigate to the base-folder that you defined in the [initial step above](#setting-up-things-for-the-first-time).
+Assuming that you have installed the nbgrader package, you should see it when opening a jupyter notebook instance.
+First, make sure that you are located in the root-folder of your autograding environment (eg. `..\autograding-2019`) - one level up from the gradertools-repository.
 
 ```
-$ cd C:\HY-DATA\...\Geo-Python\autograding-2019
-
-$ jupyter notebook
+cd C:\HY-DATA\...\Geo-Python\autograding-2019
+jupyter notebook
 ```
+
+Jupyter notebook interface should open up automatically in a browser-window.
 
 ### Grade assignments automatically
 
-0. Open nbgrader tab:
+0. Open the nbgrader tab:
 
 ![](https://nbgrader.readthedocs.io/en/stable/_images/formgrader_tab.png)
 
@@ -241,9 +274,11 @@ That's it! This is the basic workflow for grading the students exercises with nb
 
 ## Generate feedback reports
 
-** TO DO : REMOVE PDF BUILDING IF NOT REALLY NEEDED**
-
 Once you have done grading, it is time to generate feedback reports for the students.
+You can generate the feedback in the nbgrader interface, or then use a dedicated python script for generating the feedback.
+
+** TO DO : WE ARE CURRENTLY AUTOMATING THE WORKFLOW OF ADDING POINTS AND FEEDBACK TO STUDENT REPO README.MD FILES**
+** TO DO : UPDATE DOCS BELOW**
 For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](generate_feedback.py)
 that automates the process. What this tools does:
 
@@ -253,15 +288,8 @@ that automates the process. What this tools does:
 
 ### How to use the tool?
 
-It is straightforward.
 The tool uses by default the same settings than the `pull_student_repos.py` tool. Hence, you don't necessarily need to do any changes.
 If you still need to do some changes you can configure this from [gradertools/graderconfig/tools_conf.py](graderconfig/tools_conf.py).
-There is one parameter in the configuration file that is relevant for this tool, that controls the pdf building (if pdfkit does not work, you might want to disable this):
-
-```python
-# Generate pdf from the feedback (True or False)
-generate_pdf = True
-```
 
 After configuring you can run the tool from command line (you need to be in the directory where the Python file is located):
 
@@ -271,10 +299,10 @@ $ python generate_feedback.py
 
 ## Send feedback reports to students in GitHub
 
-**TO DO: UPDATE DOCS FOR SLACK FEEDBACK**
+**TO DO: UPDATE DOCS FOR PROVIDING FEEDBACK**
 
 Final step after grading and generating the feedback reports, is to share those reports to students.
-This can be done many ways, but as we are using Slack for communication anyways, let's distribute the feedback
-via that as Slack is providing an API that fits nicely for this purpose!
+Generally, we provide the feedback in the README.MD file of the student repositories.
+
 
 

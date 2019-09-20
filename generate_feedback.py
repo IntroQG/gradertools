@@ -40,29 +40,6 @@ def generate_feedback(base_folder, exercise_number):
     subprocess.call(['nbgrader', 'feedback', 'Exercise-%s' % exercise_number], cwd=base_folder)
     print("Generated feedback for Exercise %s" % exercise_number)
     
-def convert_html_to_pdf(html_fp, output_pdf_fp):
-    """Converts Html file to pdf"""
-    import pdfkit
-    options = {
-    'page-size': 'A4',
-    'margin-top': '0.0in',
-    'margin-right': '0.0in',
-    'margin-bottom': '0.0in',
-    'margin-left': '0.0in',
-    'encoding': "UTF-8",
-    'custom-header' : [
-        ('Accept-Encoding', 'gzip')
-    ],
-    'cookie': [
-        ('cookie-name1', 'cookie-value1'),
-        ('cookie-name2', 'cookie-value2'),
-    ],
-    'no-outline': None
-    }
-    print("Generating pdf ...")
-    # Convert to pdf
-    pdfkit.from_file(html_fp, output_pdf_fp, options=options)
-    print("Generated pdf: %s" % output_pdf_fp)
 
 def bn(path):
     """Return basename of a file"""
@@ -103,7 +80,7 @@ def merge_feedback_htmls(html_files, exercise_number, user):
     merged_html = template.render(file1=bn(p1), file2=bn(p2), file3=bn(p3), file4=bn(p4), file5=bn(p5))
     
     # Produce output filepath
-    output_fp = os.path.join(os.path.dirname(hf[0]), "Exercise-%s-%s-feedback.html" % (exercise_number, user))
+    output_fp = os.path.join(os.path.dirname(hf[0]), "Exercise-%s.html" % (exercise_number))
     
     with open(output_fp, 'w') as fh:
         fh.write(merged_html)
@@ -139,9 +116,7 @@ def main(base_folder, user_names, exercise_list, generate_pdf):
             
             # Merge feedback html files into one
             merged_html_fp = merge_feedback_htmls(files, exercise_num, user)
-            
-            if generate_pdf:
-                convert_html_to_pdf(html_fp=merged_html_fp, output_pdf_fp=merged_html_fp.replace('.html', '.pdf'))
+
         
 if __name__ == "__main__":
     main(base_folder, user_names, exercise_list, generate_pdf)

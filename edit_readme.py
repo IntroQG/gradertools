@@ -56,7 +56,7 @@ def edit_readme(path, score_dict, exercise_num):
 	file_path = path+"/Readme.md"
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)][0]
-	file.write("\n##Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
+	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
 		total[1]+ " points for exercise "+ str(exercise_num)+ "\n")
 	for problem in score_dict:
 		if "Exercise" not in problem:
@@ -67,6 +67,8 @@ def edit_readme(path, score_dict, exercise_num):
 				score += float(score_list[0])
 				total += float(score_list[1])
 			file.write(str(score)+" / "+str(total)+" \n")
+	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
+		".html](Exercise-"+str(exercise_num)+".html)")
 	return
 
 def main():

@@ -14,7 +14,7 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list, insp
 
 def read_html(path, exercise):
 	
-	file_path = path+"/Exercise-"+str(exercise)+".html"
+	file_path = os.path.join(path, "Exercise-"+str(exercise)+".html")
 	feedbackhtml = open(file_path,'r').readlines()
 	rmtags = re.compile('<.*?>')
 	score_dict = {'Problem 1':[]}
@@ -53,7 +53,7 @@ Example:
 ### Problem 5 - 0/5
 """
 def edit_readme(path, score_dict, exercise_num):
-	file_path = path+"/Readme.md"
+	file_path = os.path.join(path,"Readme.md")
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)][0]
 	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
@@ -73,13 +73,19 @@ def edit_readme(path, score_dict, exercise_num):
 
 def main():
 
-	# Iterate over all student's submitted repository
+	# Iterate over all student's feedback repository
 	for name in user_names:
-		student_f = os.path.join(base_folder, "submitted/"+name)
+		feedback_f = os.path.join(base_folder, "feedback", name)
+		submitted_f = os.path.join(base_folder, "submitted", name)
 		for exercise in exercise_list:
-			ex_f = os.path.join(student_f, "Exercise-"+str(exercise))
-			scores_dict = read_html(ex_f, exercise)
-			edit_readme(ex_f, scores_dict, exercise)
+			exercise_html = os.path.join(feedback_f, "Exercise-"+str(exercise))
+
+			print("Getting points for user", name, "exercise", exercise)
+			print(exercise_html)
+			scores_dict = read_html(exercise_html, exercise)
+
+			print("Editing readme for student", name)
+			edit_readme(submitted_f, scores_dict, exercise)
 			
 if __name__ == '__main__':
     main()

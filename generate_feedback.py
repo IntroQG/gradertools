@@ -26,6 +26,9 @@ Requirements:
 Created on Sat Sep 15 21:45:53 2018
 
 @author: Henrikki Tenkanen
+
+Updated Sep 23
+    - nbgrader feedback was deprecated, updated to nbgrader generate_feedback
 """
 import os
 import subprocess
@@ -37,7 +40,7 @@ from jinja2 import Environment, PackageLoader, Template
 def generate_feedback(base_folder, exercise_number):
     """Generates feedback for specified exercise"""
     # Generate the feedback
-    subprocess.call(['nbgrader', 'feedback', 'Exercise-%s' % exercise_number], cwd=base_folder)
+    subprocess.call(['nbgrader', 'generate_feedback', 'Exercise-%s' % exercise_number], cwd=base_folder)
     print("Generated feedback for Exercise %s" % exercise_number)
     
 

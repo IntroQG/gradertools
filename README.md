@@ -56,10 +56,19 @@ The tools requires a few packages that needs to be installed before using them.
            
     ```
     
-  -  [**jinja2**](http://jinja.pocoo.org/docs/2.10/) (merges html files), should come with Anaconda but if not, install:
+  - [**jinja2**](http://jinja.pocoo.org/docs/2.10/) (merges html files), should come with Anaconda but if not, install:
 
-    ```conda install -c conda-forge jinja2 ```
+    ```
+    conda install -c conda-forge jinja2 
+           
+    ```
 
+  - [**Pandas**](http://jinja.pocoo.org/docs/2.10/) (*dependency should be removed from basic gradertools scripts, but still needed for exercises!*):
+  
+    ```
+    conda install pandas
+           
+    ```
 ## Folder structure
 
 Nbgrader makes a couple of assumptions about how organize the assignment files. Read more about the nbgrader philosophy in [here](https://nbgrader.readthedocs.io/en/stable/user_guide/philosophy.html). 

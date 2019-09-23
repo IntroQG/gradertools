@@ -55,6 +55,10 @@ The tools requires a few packages that needs to be installed before using them.
     conda install -c conda-forge nbgrader
            
     ```
+    
+  -  [**jinja2**](http://jinja.pocoo.org/docs/2.10/) (merges html files), should come with Anaconda but if not, install:
+
+    ```conda install -c conda-forge jinja2 ```
 
 ## Folder structure
 

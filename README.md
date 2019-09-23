@@ -16,8 +16,11 @@ Basic workflow consists of the following steps:
 3. Pull exercise templates using `gradertools/pull_exercise_repos.py`
 4. Open Jupyter Notebook + nbgrader (run `jupyter notebook` on command line in the root-folder)
 5. Do the autograding in the formgrader (press the lightning-button for each student)
-5. Check submissions manually if needed and add written feedback
-6. Provide feedback to students
+6. Check submissions manually if needed and add written feedback
+7. Provide feedback:
+  - Generate nbgrader feedback report using `gradertools/generate_feedback.py`
+  - Add feedback summary automatically to `README.md` files using `gradertools/edit_readme.py`
+  - push changes to students' README-files to GitHub
 
 If using this tool for the first time, check the requirements, and instructions on how to set things up for the first time below.
 

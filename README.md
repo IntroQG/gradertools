@@ -66,10 +66,16 @@ The tools requires a few packages that needs to be installed before using them.
            
     ```
 
-  - [**Pandas**](http://jinja.pocoo.org/docs/2.10/) (*dependency should be removed from basic gradertools scripts, but still needed for exercises!*):
+  - [**Pandas**] (*dependency should be removed from basic gradertools scripts, but still needed for exercises!*):
   
     ```
     conda install pandas
+           
+    ```
+   - [**nose**] (*library for running the tests*):
+  
+    ```
+    conda install nose
            
     ```
 ## Folder structure

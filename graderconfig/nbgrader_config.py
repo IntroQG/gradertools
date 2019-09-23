@@ -25,7 +25,7 @@ def set_to_path():
 set_to_path()
 from gradertools.graderconfig.tools_conf import base_folder, organization
 #from get_students_of_assistant import get_course_students
-from get_course_assignments import create_assignments
+#from get_course_assignments import create_assignments
 
 c = get_config()
 

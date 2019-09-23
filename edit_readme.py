@@ -12,15 +12,28 @@ import re
 import os
 from graderconfig.tools_conf import base_folder, user_names, exercise_list, inspector_user_name
 
-def read_html(path, exercise):
-	
-	file_path = os.path.join(path, "Exercise-"+str(exercise)+".html")
-	feedbackhtml = open(file_path,'r').readlines()
+def read_html_ex2(path, exercise, name):
+	file_path = os.path.join(path, "Exercise-"+str(exercise)+"-feedback.html")
+
+	# Print feedback file info, student name, exercise number
+	print("Getting points for user", name, "exercise", exercise)
+	print(file_path)
+
+	try:
+		feedbackhtml = open(file_path,'rb').readlines()
+	except FileNotFoundError:
+		print("html feedback not found. Generate it for", name, "exercise", exercise)
+		return {}
+
+	# Set up regular expression to remove html tags
 	rmtags = re.compile('<.*?>')
-	score_dict = {'Problem 1':[]}
-	scores = [line for line in feedbackhtml if '(Score:' in line]
+	score_dict = {}
+	scores = [line.decode('ISO-8859-1') for line in feedbackhtml \
+		if ('(Score:' in line.decode('ISO-8859-1'))]
+
+	# Check whether it's able to fetch scores from html feedback
 	read_next = True
-	problem = 1
+	problem = 0
 	index = 1
 	while (read_next):
 		strip_score = re.sub(rmtags, '', scores[index]).strip().split(" ")
@@ -35,25 +48,39 @@ def read_html(path, exercise):
 			read_next = False
 	strip_total = re.sub(rmtags, '', scores[0]).strip().split(" ")
 	score_dict["Exercise "+str(exercise)] = [[strip_total[-3],strip_total[-1][:-1]]]
-	
+
 	return score_dict
 
-"""
-Example:
-## Grading (12.11.2018 by LY): 25/30 points for exercise 7
+def read_html(path, exercise, name):
+	file_path = os.path.join(path, "Exercise-"+str(exercise)+"-feedback.html")
 
-### Problem 1 - 4.5/5
+	# Print feedback file info, student name, exercise number
+	print("Getting points for user", name, "Exercise", exercise)
+	print(file_path)
 
-### Problem 2 - 0/7
+	try:
+		feedbackhtml = open(file_path,'rb').readlines()
+	except FileNotFoundError:
+		print("html feedback not found. Generate it for", name, "exercise", exercise)
+		return []
 
-### Problem 3 - 0/7
+	# Set up regular expression to remove html tags
+	rmtags = re.compile('<.*?>')
+	scores = [line.decode('ISO-8859-1') for line in feedbackhtml \
+		if ('(Score:' in line.decode('ISO-8859-1')) and ('Exercise' in line.decode('ISO-8859-1'))]
+	scores_clean = []
+	for score in scores:
+		score_list = re.sub(rmtags, '', score).strip().split(" ")
+		scores_clean.append([score_list[2],score_list[4][:-1]])
+	return scores_clean
 
-### Problem 4 - 0/6
-
-### Problem 5 - 0/5
-"""
-def edit_readme(path, score_dict, exercise_num):
+def edit_readme_ex2(path, score_dict, exercise_num, name):
 	file_path = os.path.join(path,"Readme.md")
+
+	# Print README.md file info
+	print("Editing readme for student", name, "Exercise", exercise_num)
+	print(file_path)
+
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)][0]
 	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
@@ -68,24 +95,51 @@ def edit_readme(path, score_dict, exercise_num):
 				total += float(score_list[1])
 			file.write(str(score)+" / "+str(total)+" \n")
 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
-		".html](Exercise-"+str(exercise_num)+".html)")
+		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
+	return
+
+def edit_readme(path, scores_list, exercise_num, name):
+	file_path = os.path.join(path,"Readme.md")
+
+	# Print README.md file info
+	print("Editing readme for user", name, "Exercise", exercise_num)
+	print(file_path)
+
+	file = open(file_path,'a')
+	file.write("## Grading (by "+ inspector_user_name+ ") \n")
+	total_score = 0
+	total_got = 0
+	for i in range(0,len(scores_list)):
+		file.write("### Problem "+str(i+1)+" - ")
+		file.write(str(scores_list[i][0])+" / "+str(scores_list[i][1])+" \n")
+		total_score += float(scores_list[i][1])
+		total_got += float(scores_list[i][0])
+	file.write("### "+str(total_got)+" / "+str(total_score)+" for Exercise "+\
+		str(exercise_num)+" \n")
+	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
+		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
 	return
 
 def main():
 
 	# Iterate over all student's feedback repository
 	for name in user_names:
-		feedback_f = os.path.join(base_folder, "feedback", name)
+		# feedback_f = os.path.join(base_folder, "feedback", name)
 		submitted_f = os.path.join(base_folder, "submitted", name)
 		for exercise in exercise_list:
-			exercise_html = os.path.join(feedback_f, "Exercise-"+str(exercise))
+			file_path = os.path.join(submitted_f, "Exercise-"+str(exercise))
+			if exercise == 2:
+				scores_dict = read_html_ex2(file_path, exercise, name)
+				if scores_dict != {}:
+					edit_readme_ex2(file_path, scores_dict, exercise, name)
+				else:
+					print("Unable to fetch scores.")
+			else: 
+				scores_dict = read_html(file_path, exercise, name)
+				if scores_dict != []:
+					edit_readme(file_path, scores_dict, exercise, name)
+				else:
+					print("Unable to fetch scores.")
 
-			print("Getting points for user", name, "exercise", exercise)
-			print(exercise_html)
-			scores_dict = read_html(exercise_html, exercise)
-
-			print("Editing readme for student", name)
-			edit_readme(submitted_f, scores_dict, exercise)
-			
 if __name__ == '__main__':
     main()

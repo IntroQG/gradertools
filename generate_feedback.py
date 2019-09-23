@@ -17,10 +17,10 @@ Requirements:
     
     - jinja:
         
-        conda install -c conda-forge jinja2 
-        
-    - python-pdfkit package: 
-        
+        conda install -c conda-forge jinja2
+
+    - python-pdfkit package:
+
         pip install pdfkit
         
 Created on Sat Sep 15 21:45:53 2018
@@ -37,10 +37,20 @@ import glob
 import shutil
 from jinja2 import Environment, PackageLoader, Template
 
+
+
+
 def generate_feedback(base_folder, exercise_number):
     """Generates feedback for specified exercise"""
     # Generate the feedback
     subprocess.call(['nbgrader', 'generate_feedback', 'Exercise-%s' % exercise_number], cwd=base_folder)
+    print("Generated feedback for Exercise %s" % exercise_number)
+
+
+def generate_feedback(base_folder, exercise_number, username):
+    """Generates feedback for specified exercise and specific student"""
+    # Generate the feedback
+    subprocess.call(['nbgrader', 'generate_feedback', 'Exercise-%s'% (exercise_number), '--student', username], cwd=base_folder)
     print("Generated feedback for Exercise %s" % exercise_number)
     
 
@@ -70,7 +80,7 @@ def merge_feedback_htmls(html_files, exercise_number, user):
         p1, p2, p3, p4, p5 = hf[0], None, None, None, None
     else:
         raise ValueError("No Html files were found. Check that the feedback files exist!")
-   
+
     env = Environment(loader=PackageLoader('mergehtml'))
     template = env.get_template('index.html')
     
@@ -83,7 +93,7 @@ def merge_feedback_htmls(html_files, exercise_number, user):
     merged_html = template.render(file1=bn(p1), file2=bn(p2), file3=bn(p3), file4=bn(p4), file5=bn(p5))
     
     # Produce output filepath
-    output_fp = os.path.join(os.path.dirname(hf[0]), "Exercise-%s.html" % (exercise_number))
+    output_fp = os.path.join(os.path.dirname(hf[0]), "Exercise-%s-feedback.html" % (exercise_number))
     
     with open(output_fp, 'w') as fh:
         fh.write(merged_html)
@@ -108,17 +118,29 @@ def main(base_folder, user_names, exercise_list, generate_pdf):
     # Generate the feedback html files 
     for exercise_num in exercise_list:
         
-        # Generate feedback 
-        generate_feedback(base_folder, exercise_num)
-        
         # Merge feedback html files 
         for user in user_names:
+            print("USER:", user)
+            # Generate feedback
+            generate_feedback(base_folder, exercise_num, user)
 
             # Get the filepaths for feedback html files
             files = get_user_feedback_files(base_folder, exercise_num, user)
-            
-            # Merge feedback html files into one
-            merged_html_fp = merge_feedback_htmls(files, exercise_num, user)
+
+            if len(files) == 0:
+                print("no feedback files found for user", user)
+
+            else:
+                # Merge feedback html files into one
+                merged_html_fp = merge_feedback_htmls(files, exercise_num, user)
+                print(merged_html_fp)
+
+                # copy feedback file into student folder
+                submission_folder = os.path.join(base_folder, "submitted", user, "Exercise-%s" % exercise_num)
+                shutil.copy(merged_html_fp, os.path.join(base_folder, submission_folder))
+                print("output feedback stored in", submission_folder)
+
+            print("-----------------------------------------------------------------\n")
 
         
 if __name__ == "__main__":

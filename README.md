@@ -10,7 +10,10 @@ what is different compared with the original tool:
 
 ## Workflow
 
+0. initialize the tools using `gradertools/init_gradertools.py` (only when using the tools for the first time, or if updating the nbgrader configurations!)
+
 Basic workflow consists of the following steps:
+
 1. Change settings in the `gradertools/graderconfig/tools_conf.py` -file (list of students, and list of exercises)
 2. Pull student repos using `gradertools/pull_student_repos.py`
 3. Pull exercise templates using `gradertools/pull_exercise_repos.py`
@@ -233,7 +236,19 @@ python pull_exercise_repos.py
 Once, you have pulled GitHub repositories using `pull_student_repos.py` and `pull_exercise_repos.py`, you can autograde them using nbgrader. 
 Notice, that most of our **exercises include also manual grading** such as checking that the students have answered to the questions, and commented their code etc.
 
-### Start Nbgrader
+
+### Autograding on the command line
+
+Running the command `nbgrader autograde` autogrades the students' submissions, and stores the result into a folder called `autograded`.
+Navigate to the root folder (eg. `autograding-2019`) and run the command for a spesific exercise:
+
+```
+nbgrader autograde "Exercise-3"
+```
+
+The command line tool assumes that you have corresponding documents in `source` (and `release`) folder. (run first `pull_exercise_repos.py`).
+
+### Autograding using the Nbgrader user interface
 
 Assuming that you have installed the nbgrader package, you should see it when opening a jupyter notebook instance.
 First, make sure that you are located in the root-folder of your autograding environment (eg. `..\autograding-2019`) - one level up from the gradertools-repository.

@@ -14,16 +14,17 @@ what is different compared with the original tool:
 
 Basic workflow consists of the following steps:
 
-1. Change settings in the `gradertools/graderconfig/tools_conf.py` -file (list of students, and list of exercises)
+1. Change settings in the `gradertools/graderconfig/tools_conf.py` -file (teacher name, list of students, and list of exercises)
 2. Pull student repos using `gradertools/pull_student_repos.py`
 3. Pull exercise templates using `gradertools/pull_exercise_repos.py`
 4. Open Jupyter Notebook + nbgrader (run `jupyter notebook` on command line in the root-folder)
 5. Do the autograding in the formgrader (press the lightning-button for each student)
 6. Check submissions manually if needed and add written feedback
 7. Provide feedback:
-  - Generate nbgrader feedback report using `gradertools/generate_feedback.py`
-  - Add feedback summary automatically to `README.md` files using `gradertools/edit_readme.py`
-  - push changes to students' README-files to GitHub
+    - Generate nbgrader feedback report using `gradertools/generate_feedback.py`
+    - Add feedback summary automatically to `README.md` files using `gradertools/edit_readme.py` (reads teacher name from `tools_conf.py`!)
+    - Check manually, if needed.
+    - push changes to students' README-files to GitHub using `push_feedback.py` (control list of students from from `tools_conf.py`!)
 
 If using this tool for the first time, check the requirements, and instructions on how to set things up for the first time below.
 

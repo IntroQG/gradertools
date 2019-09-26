@@ -232,7 +232,7 @@ def create_assignment(base_folder, exercise_number):
     assignment = "Exercise-%s" % exercise_number
     
     print("Assign %s" % (assignment))
-    subprocess.call([ "nbgrader", "assign", assignment], cwd=base_folder)
+    subprocess.call([ "nbgrader", "generate_assignment", assignment], cwd=base_folder)
     
     return True
 

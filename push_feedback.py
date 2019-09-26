@@ -14,7 +14,7 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 
 
 
-def git_push(repo_path, commit_msg, files = ["README.md"]):
+def git_push(repo_path, commit_msg, files=["README.md"]):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)
@@ -22,6 +22,7 @@ def git_push(repo_path, commit_msg, files = ["README.md"]):
         repo.index.commit(commit_msg)
         origin = repo.remote(name='origin')
         origin.push()
+        print("pushed feedback to")
     except:
         print('Some error occured while pushing the code')
 
@@ -40,9 +41,9 @@ def main():
             commit_msg = "added points to exercise %s" % exercise_number
 
             # Iterate over usernames
-            for uname in user_names:
+            for user in user_names:
 
-                print("USER: %s" % uname)
+                print("USER: %s" % user)
 
                 # Set repo path
                 exercise_repo_path = os.path.join(submitted_f, user, "Exercise-%s" % exercise_number)

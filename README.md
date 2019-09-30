@@ -315,8 +315,10 @@ That's it! This is the basic workflow for grading the students exercises with nb
 Once you have done grading, it is time to generate feedback reports for the students.
 You can generate the feedback in the nbgrader interface, or then use a dedicated python script for generating the feedback.
 
-** TO DO : WE ARE CURRENTLY AUTOMATING THE WORKFLOW OF ADDING POINTS AND FEEDBACK TO STUDENT REPO README.MD FILES**
-** TO DO : UPDATE DOCS BELOW**
+**WE ARE CURRENTLY AUTOMATING THE WORKFLOW OF ADDING POINTS AND FEEDBACK TO STUDENT REPO README.MD FILES.**
+
+**TODO: UPDATE DOCS BELOW.**
+
 For this purpose, we have a dedicated tool [gradertools/generate_feedback.py](generate_feedback.py)
 that automates the process. What this tools does:
 

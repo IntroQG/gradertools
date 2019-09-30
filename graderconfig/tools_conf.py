@@ -68,26 +68,34 @@ autograding_suffix = "-autograding"
 
 
 # Generate list of usernames:
-user_names = """Copy
-paste
-here
-users
-from 
-excel
-one
-per
-line"""
+# Uncomment lines below to directly list student names
+#user_names = """Copy
+#paste
+#here
+#users
+#from 
+#excel
+#one
+#per
+#line"""
+
+# Placeholder for graderbot (comment out if using list above)
+user_names = NAMES_GO_HERE
 
 user_names = user_names.split("\n")
 
 # List of GitHub usernames that should be pulled
-# Comment out this line if you use the split-approach above :)cd ..
-user_names = ['saratodorovic', 'VuokkoH', 'hunajaiivari']
+# Comment out this line if you use the split-approach above :)
+#user_names = ['saratodorovic', 'VuokkoH', 'hunajaiivari']
 
 
 # List of exercise numbers to pull (e.g. [3], or [3,4,5] if fetching multiple)
-exercise_list = [2]
-    
+# Uncomment to list exercises directly
+#exercise_list = [2]
+
+# Exercise list if using graderbot (comment out if listing exercises above)
+exercise_list = TO_BE_GRADED
+
 # Additional Classroom repos (e.g. ['final-assignment'])
 additional_classroom_repos = []
     

@@ -191,7 +191,7 @@ Compliance with NBgrader  requires a few special tricks (done automatically by t
 
  - This tool will create a folder called `submitted` which is where the student's assignments are organized and stored.
  - The GitHub Classroom repository that is pulled will be renamed from `exercise-3-username` to `Exercise-3`
- - On Windows computers, the tool sets file permissions related to `.git` (otherwise nbgrader will throw an error)
+ - ~~On Windows computers, the tool sets file permissions related to `.git` (otherwise nbgrader will throw an error).~~ This issue has been fixed. 
  
 
 ### How to run?

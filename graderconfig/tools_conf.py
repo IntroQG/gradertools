@@ -56,7 +56,7 @@ def get_project_root_path():
 # ===============================
 
 # Inspector (the GitHub username of assistant/instructor)
-inspector_user_name = 'VuokkoH'
+inspector_user_name = 'GRADER_NAME_GOES_HERE'
 
 # Organization
 organization = "Geo-Python-2019"

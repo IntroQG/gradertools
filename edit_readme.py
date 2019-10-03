@@ -75,7 +75,7 @@ def read_html(path, exercise, name):
 	return scores_clean
 
 def edit_readme_ex2(path, score_dict, exercise_num, name):
-	file_path = os.path.join(path,"Readme.md")
+	file_path = os.path.join(path,"README.md")
 
 	# Print README.md file info
 	print("Editing readme for student", name, "Exercise", exercise_num)
@@ -99,7 +99,7 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):
 	return
 
 def edit_readme(path, scores_list, exercise_num, name):
-	file_path = os.path.join(path,"Readme.md")
+	file_path = os.path.join(path,"README.md")
 
 	# Print README.md file info
 	print("Editing readme for user", name, "Exercise", exercise_num)

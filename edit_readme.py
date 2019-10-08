@@ -69,6 +69,7 @@ def read_html(path, exercise, name):
 	scores = [line.decode('ISO-8859-1') for line in feedbackhtml \
 		if ('(Score:' in line.decode('ISO-8859-1')) and ('Exercise' in line.decode('ISO-8859-1'))]
 	scores_clean = []
+	scores.sort()
 	for score in scores:
 		score_list = re.sub(rmtags, '', score).strip().split(" ")
 		scores_clean.append([score_list[2],score_list[4][:-1]])

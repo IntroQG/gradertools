@@ -75,7 +75,7 @@ def read_html(path, exercise, name):
 		scores_clean.append([score_list[2],score_list[4][:-1]])
 	return scores_clean
 
-def edit_readme_ex2(path, score_dict, exercise_num, name):
+def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 	file_path = os.path.join(path,"README.md")
 
 	# Print README.md file info
@@ -95,11 +95,12 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):
 				score += float(score_list[0])
 				total += float(score_list[1])
 			file.write(str(score)+" / "+str(total)+" \n")
-	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
-		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
+	# if html_link:
+	# 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
+	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
 	return
 
-def edit_readme(path, scores_list, exercise_num, name):
+def edit_readme(path, scores_list, exercise_num, name):#, html_link):
 	file_path = os.path.join(path,"README.md")
 
 	# Print README.md file info
@@ -117,8 +118,9 @@ def edit_readme(path, scores_list, exercise_num, name):
 		total_got += float(scores_list[i][0])
 	file.write("### "+str(total_got)+" / "+str(total_score)+" for Exercise "+\
 		str(exercise_num)+" \n")
-	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
-		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
+	# if html_link:
+	# 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
+	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
 	return
 
 def main():
@@ -128,17 +130,25 @@ def main():
 		# feedback_f = os.path.join(base_folder, "feedback", name)
 		submitted_f = os.path.join(base_folder, "submitted", name)
 		for exercise in exercise_list:
+			# Whether to add html link to the README and share the file or not
+			# commented out for now
+			# share_html = input("Do you want to share the html feedback with the student for Exercise "\
+			# 	+str(exercise)+" ? (y/n)")
+			# if share_html == "n":
+			# 	html_link = False
+			# else:
+			# 	html_link = True
 			file_path = os.path.join(submitted_f, "Exercise-"+str(exercise))
 			if exercise == 2:
 				scores_dict = read_html_ex2(file_path, exercise, name)
 				if scores_dict != {}:
-					edit_readme_ex2(file_path, scores_dict, exercise, name)
+					edit_readme_ex2(file_path, scores_dict, exercise, name)#, html_link)
 				else:
 					print("Unable to fetch scores.")
 			else: 
 				scores_dict = read_html(file_path, exercise, name)
 				if scores_dict != []:
-					edit_readme(file_path, scores_dict, exercise, name)
+					edit_readme(file_path, scores_dict, exercise, name)#, html_link)
 				else:
 					print("Unable to fetch scores.")
 

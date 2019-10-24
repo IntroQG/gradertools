@@ -66,14 +66,45 @@ def read_html(path, exercise, name):
 
 	# Set up regular expression to remove html tags
 	rmtags = re.compile('<.*?>')
+	score_dict = {}
 	scores = [line.decode('ISO-8859-1') for line in feedbackhtml \
-		if ('(Score:' in line.decode('ISO-8859-1')) and ('Exercise' in line.decode('ISO-8859-1'))]
-	scores_clean = []
-	scores.sort()
-	for score in scores:
-		score_list = re.sub(rmtags, '', score).strip().split(" ")
-		scores_clean.append([score_list[2],score_list[4][:-1]])
-	return scores_clean
+		if (('(Score:' in line.decode('ISO-8859-1')) & \
+			('problem_' in line.decode('ISO-8859-1')))]
+
+	# Check whether it's able to fetch scores from html feedback
+	read_next = True
+	problem = 0
+	index = 0
+	while (read_next):
+
+		strip_score = re.sub(rmtags, '', scores[index]).strip().split(" ")
+		if "problem_"+str(problem) in scores[index]:
+			if "Problem "+str(problem) in score_dict:
+				score_dict["Problem "+str(problem)].append([strip_score[-3],strip_score[-1][:-1]])
+			else:
+				score_dict["Problem "+str(problem)] = [[strip_score[-3],strip_score[-1][:-1]]]
+			index += 1
+		else:
+			problem += 1
+		if index >= len(scores) or problem > 7:
+			read_next = False
+
+	for problem in score_dict:
+		score_get = 0
+		score_total = 0
+		for i in range(len(score_dict[problem])):
+			score_get += float(score_dict[problem][i][0])
+			score_total += float(score_dict[problem][i][1])
+		score_dict[problem] = [str(score_get), str(score_total)]
+
+	score_get = 0
+	score_total = 0
+	for problem in score_dict:
+		score_get += float(score_dict[problem][0])
+		score_total += float(score_dict[problem][1])
+	score_dict["Exercise "+str(exercise)] = [str(score_get), str(score_total)]
+
+	return score_dict
 
 def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 	file_path = os.path.join(path,"README.md")
@@ -100,24 +131,28 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
 	return
 
-def edit_readme(path, scores_list, exercise_num, name):#, html_link):
+def edit_readme(path, score_dict, exercise_num, name):#, html_link):
 	file_path = os.path.join(path,"README.md")
 
 	# Print README.md file info
-	print("Editing readme for user", name, "Exercise", exercise_num)
+	print("Editing readme for student", name, "Exercise", exercise_num)
 	print(file_path)
 
+	# Check is already graded
+	file = open(file_path, 'r')
+	graded = any("## Grading (by " in line for line in file)
+	if graded:
+		print("This exercise is already graded. Proceed")
+		return
+
 	file = open(file_path,'a')
-	file.write("## Grading (by "+ inspector_user_name+ ") \n")
-	total_score = 0
-	total_got = 0
-	for i in range(0,len(scores_list)):
-		file.write("### Problem "+str(i+1)+" - ")
-		file.write(str(scores_list[i][0])+" / "+str(scores_list[i][1])+" \n")
-		total_score += float(scores_list[i][1])
-		total_got += float(scores_list[i][0])
-	file.write("### "+str(total_got)+" / "+str(total_score)+" for Exercise "+\
-		str(exercise_num)+" \n")
+	total = score_dict["Exercise "+str(exercise_num)]
+	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
+		total[1]+ " points for exercise "+ str(exercise_num)+ "\n")
+	for problem in score_dict:
+		if "Exercise" not in problem:
+			file.write("### "+problem+" - ")
+			file.write(score_dict[problem][0]+" / "+score_dict[problem][1]+" \n")
 	# if html_link:
 	# 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
 	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")

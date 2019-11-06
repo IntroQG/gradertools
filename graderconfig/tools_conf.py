@@ -84,8 +84,6 @@ user_names = """NAMES_GO_HERE"""
 
 user_names = user_names.split("\n")
 
-print("User names: {0}".format(user_names))
-
 # List of GitHub usernames that should be pulled
 # Comment out this line if you use the split-approach above :)
 #user_names = ['saratodorovic', 'VuokkoH', 'hunajaiivari']

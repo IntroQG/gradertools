@@ -18,7 +18,7 @@ def get_token():
     token = os.environ['GITHUB_TOKEN']
     return token
 
-def git_push(repo_path, commit_msg, files=["README.md"], token):
+def git_push(repo_path, commit_msg, files=["README.md"], token=None):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)
@@ -57,7 +57,7 @@ def main():
                 exercise_repo_path = os.path.join(submitted_f, user, "Exercise-%s" % exercise_number)
 
                 # Push listed files
-                git_push(exercise_repo_path, commit_msg, files=["README.md"], token)
+                git_push(exercise_repo_path, commit_msg, files=["README.md"], token=token)
 
 
 if __name__ == '__main__':

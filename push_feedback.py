@@ -17,15 +17,11 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 def git_push(repo_path, commit_msg, files=["README.md"]):
     """ add, commit and push listed files """
     try:
-        print('push feedback debug')
         repo = Repo(repo_path)
-        print(repo)
         repo.index.add(files)
         repo.index.commit(commit_msg)
         origin = repo.remote(name='origin')
-        print(origin)
         origin.push()
-        print("pushed feedback to")
     except:
         print('Some error occured while pushing the code')
 

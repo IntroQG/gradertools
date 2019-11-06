@@ -80,8 +80,7 @@ autograding_suffix = "-autograding"
 #line"""
 
 # Placeholder for graderbot (comment out if using list above)
-user_names = """NAMES_GO_HERE
-"""
+user_names = """NAMES_GO_HERE"""
 
 user_names = user_names.split("\n")
 

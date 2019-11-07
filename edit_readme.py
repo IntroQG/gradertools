@@ -115,20 +115,27 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)][0]
+	file.write("## Exercise {0} grade and feedback: {1:.1f} / {2:.1f} points\n".format(exercise_num, total[0], total[1]))
+	file.write("### Grader\n")
+	file.write("- {0}\n".format(inspector_user_name))
+	file.write("### Problem scores\n")
+
 	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
-		total[1]+ " points for exercise "+ str(exercise_num)+ "\n")
+		total[1]+ " points for Exercise "+ + "\n")
 	for problem in score_dict:
 		if "Exercise" not in problem:
-			file.write("### "+problem+" - ")
+			file.write("- "+problem+": ")
 			score = 0
 			total = 0
 			for score_list in score_dict[problem]:
 				score += float(score_list[0])
 				total += float(score_list[1])
-			file.write(str(score)+" / "+str(total)+" \n")
+			file.write("- "str(score)+" / "+str(total)+" \n")
 	# if html_link:
 	# 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
 	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")
+	file.write("### Comments\n")
+	file.write("- Comments will be added here.\n")
 	return
 
 def edit_readme(path, score_dict, exercise_num, name):#, html_link):

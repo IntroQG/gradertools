@@ -115,7 +115,7 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)][0]
-	file.write("## Exercise {0} grade and feedback: {1:.1f} / {2:.1f} points\n".format(exercise_num, total[0], total[1]))
+	file.write("## Exercise {0} grade and feedback: {1} / {2} points\n".format(exercise_num, total[0], total[1]))
 	file.write("### Grader\n")
 	file.write("- {0}\n".format(inspector_user_name))
 	file.write("### Problem scores\n")
@@ -152,7 +152,7 @@ def edit_readme(path, score_dict, exercise_num, name):#, html_link):
 
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)]
-	file.write("## Exercise {0} grade and feedback: {1:.1f} / {2:.1f} points\n".format(exercise_num, total[0], total[1]))
+	file.write("## Exercise {0} grade and feedback: {1} / {2} points\n".format(exercise_num, total[0], total[1]))
 	file.write("### Grader\n")
 	file.write("- {0}\n".format(inspector_user_name))
 	file.write("### Problem scores\n")

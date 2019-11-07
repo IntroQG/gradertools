@@ -24,10 +24,12 @@ def git_push(repo_path, commit_msg, files=["README.md"], token=None):
         repo = Repo(repo_path)
         orig_remote = repo.remotes[0].url[8:]
         new_remote = 'https://'+token+'@'+orig_remote
+        print(new_remote)
         remote = repo.create_remote('autograde', url=new_remote)
         repo.index.add(files)
         repo.index.commit(commit_msg)
         autograde = repo.remote(name='autograde')
+        print(repo.remotes)
         autograde.push('autograde', 'master')
     except:
         print('Some error occured while pushing the code')

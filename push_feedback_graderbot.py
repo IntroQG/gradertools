@@ -30,7 +30,7 @@ def git_push(repo_path, commit_msg, files=["README.md"], token=None):
         repo.index.commit(commit_msg)
         autograde = repo.remote(name='autograde')
         print(repo.remotes)
-        autograde.push('autograde', 'master')
+        autograde.push()
     except:
         print('Some error occured while pushing the code')
 

@@ -120,8 +120,6 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 	file.write("- {0}\n".format(inspector_user_name))
 	file.write("### Problem scores\n")
 
-	file.write("## Grading (by "+ inspector_user_name+ "): "+ total[0]+ " / "+ \
-		total[1]+ " points for Exercise "+ + "\n")
 	for problem in score_dict:
 		if "Exercise" not in problem:
 			file.write("- "+problem+": ")
@@ -130,7 +128,7 @@ def edit_readme_ex2(path, score_dict, exercise_num, name):#, html_link):
 			for score_list in score_dict[problem]:
 				score += float(score_list[0])
 				total += float(score_list[1])
-			file.write("- "str(score)+" / "+str(total)+" \n")
+			file.write(str(score)+" / "+str(total)+"\n")
 	# if html_link:
 	# 	file.write("### Go to the feedback file [Exercise-"+str(exercise_num)+ \
 	# 		"-feedback.html](Exercise-"+str(exercise_num)+"-feedback.html)")

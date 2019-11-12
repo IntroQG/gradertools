@@ -83,7 +83,7 @@ def edit_readme(path, score_dict, exercise_num, name):#, html_link):
 
 	file = open(file_path,'a')
 	total = score_dict["Exercise "+str(exercise_num)]
-	file.write("## Exercise {0} grade and feedback: {1} / {2} points\n".format(exercise_num, total[0], total[1]))
+	file.write("\n## Exercise {0} grade and feedback: {1} / {2} points\n".format(exercise_num, total[0], total[1]))
 	file.write("### Grader\n")
 	file.write("- {0}\n".format(inspector_user_name))
 	file.write("### Problem scores\n")

@@ -113,15 +113,15 @@ This can be for example (as set in these scripts):
 
  ```
  # Base folder
- C:\HY-DATA\...\Geo-Python\autograding-2019
+ C:\HY-DATA\...\IntroQG\autograding-2019
  ```
 
 When you have created the base folder for your exercises, you **need to clone this `gradertools` repository** into the base folder:
 
  ```
- cd C:\HY-DATA\...\Geo-Python\autograding-2019
+ cd C:\HY-DATA\...\IntroQG\autograding-2019
 
- git clone https://github.com/geo-python-2019/gradertools
+ git clone https://github.com/introqg-2019/gradertools
 
  ```
 
@@ -159,7 +159,7 @@ The tool is managed from [gradertools/graderconfig/tools_conf.py](graderconfig/t
 ```python
 
   # GitHub Organization where the exercises will be stored
-  organization = "Geo-Python-2019"
+  organization = "introqg-2019"
 
   # Suffix for source repository for autograded Exercises
   autograding_suffix = "-autograding"
@@ -207,7 +207,7 @@ python gradertools\pull_student_repos.py
 OR from the gradertools-folder:
 
 ```
-cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
+cd C:\HY-DATA\...\IntroQG\autograding-2019\gradertools
 python pull_student_repos.py
 ```
 
@@ -228,7 +228,7 @@ python gradertools\pull_exercise_repos.py
 OR from the gradertools-folder:
 
 ```
-cd C:\HY-DATA\...\Geo-Python\autograding-2019\gradertools
+cd C:\HY-DATA\...\IntroQG\autograding-2019\gradertools
 python pull_exercise_repos.py
 ```
 
@@ -255,7 +255,7 @@ Assuming that you have installed the nbgrader package, you should see it when op
 First, make sure that you are located in the root-folder of your autograding environment (eg. `..\autograding-2019`) - one level up from the gradertools-repository.
 
 ```
-cd C:\HY-DATA\...\Geo-Python\autograding-2019
+cd C:\HY-DATA\...\IntroQG\autograding-2019
 jupyter notebook
 ```
 

@@ -1,6 +1,6 @@
 # Tools for autograding
 
-This repository contains a few scripts that helps to manage Geo-Python and AutoGIS Exercises.
+This repository contains a few scripts that helps to manage the Geo-Python and IntroQG Exercises.
 This is a simplified version of the original gradertools developed by Henkka: https://github.com/geo-python/gradertools 
 
 what is different compared with the original tool:

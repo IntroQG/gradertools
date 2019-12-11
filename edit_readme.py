@@ -76,9 +76,9 @@ def edit_readme(path, score_dict, exercise_num, name):#, html_link):
 
 	# Check is already graded
 	file = open(file_path, 'r')
-	graded = any("## Grading (by " in line for line in file)
+	graded = any("### Grader" in line for line in file)
 	if graded:
-		print("This exercise is already graded. Proceed")
+		print("This exercise has already been graded. Proceeding...")
 		return
 
 	file = open(file_path,'a')

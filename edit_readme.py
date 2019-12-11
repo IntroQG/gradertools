@@ -47,7 +47,7 @@ def read_html(path, exercise, name):
 			index += 1
 		else:
 			problem += 1
-		if index >= len(scores) or problem > 7:
+		if index >= len(scores) or problem > 9:
 			read_next = False
 
 	for problem in score_dict:

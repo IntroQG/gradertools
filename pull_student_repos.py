@@ -202,8 +202,9 @@ def get_token():
 def git_clone(github_remote, repo_path, token=None):
     """Clones remote repository to path"""
     # Clone remote
-    orig_remote = github_remote
-    github_remote = 'https://'+token+'@'+orig_remote
+    orig_remote = github_remote[8:]
+    if token != None:
+        github_remote = 'https://'+token+'@'+orig_remote
     print("Cloning repository '%s'" % github_remote)
     try:
         Repo.clone_from(github_remote, repo_path)

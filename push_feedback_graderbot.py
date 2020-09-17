@@ -14,8 +14,7 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 
 # DEBUG
 import logging
-logging.basicConfig()
-logging.root.setLogLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 def get_token():
     """Gets secure GitHub token for committing"""

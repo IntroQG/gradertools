@@ -122,6 +122,10 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
         
         # Get the repo
         repo = Repo(repo_path)
+        print('*** REPO ***')
+        print(repo)
+        print('*** REPO ***')
+
         
         # Check if the repo is correct student Classroom
         if user is not None:

@@ -42,9 +42,6 @@ def create_remote(repo, github_remote_url):
     """Creates a remote to specified url."""
     try:
         origin = repo.create_remote('origin', github_remote_url)
-        print('*** REMOTE ***')
-        print(origin)
-        print('*** REMOTE ***')
         return origin
     except:
         return repo.remotes.origin
@@ -54,6 +51,9 @@ def pull_repo(repo, github_remote):
     try:
         # Create remote connection to GitHub
         origin = create_remote(repo, github_remote)
+        print('*** REMOTE ***')
+        print(origin)
+        print('*** REMOTE ***')
         assert origin.exists()
 
         # Fetch the repo from GitHub

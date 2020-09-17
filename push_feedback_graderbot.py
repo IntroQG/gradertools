@@ -25,6 +25,10 @@ def git_push(repo_path, commit_msg, files=["README.md"], token=None):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)
+        
+        # DEBUG
+        print('Push repo:', repo.remotes[0].url)
+        
         orig_remote = repo.remotes[0].url[8:]
         new_remote = 'https://'+token+'@'+orig_remote
         remote = repo.create_remote('autograde', url=new_remote)

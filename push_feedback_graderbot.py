@@ -27,7 +27,7 @@ def git_push(repo_path, commit_msg, files=["README.md"], token=None):
         repo = Repo(repo_path)
         #orig_remote = repo.remotes[0].url[8:]
         orig_remote = repo.remotes[0].url
-        new_remote = 'https://'+token+'@'+orig_remote
+        #new_remote = 'https://'+token+'@'+orig_remote
         remote = repo.create_remote('autograde', url=orig_remote)
         repo.index.add(files)
         repo.index.commit(commit_msg)
@@ -42,7 +42,7 @@ def main():
     submitted_f = os.path.join(base_folder, "submitted")
 
     # Get token
-    token = get_token()
+    #token = get_token()
 
     # Iterate over exercises if they are defined
     if len(exercise_list) > 0:
@@ -61,7 +61,7 @@ def main():
                 exercise_repo_path = os.path.join(submitted_f, user, "Exercise-%s" % exercise_number)
 
                 # Push listed files
-                git_push(exercise_repo_path, commit_msg, files=["README.md"], token=token)
+                git_push(exercise_repo_path, commit_msg, files=["README.md"], token=None)
 
 
 if __name__ == '__main__':

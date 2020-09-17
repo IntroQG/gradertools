@@ -100,6 +100,10 @@ def is_classroom_release(repo, exercise):
 
 def update_autograding_source_repo(base_folder, enumber):
     """Clones / pulls the autograding source files"""
+
+    # Get token
+    token = get_token()
+
     # Create the folder for sources
     source_dir, exercise_dir = create_source_exercise_folder(base_folder, enumber)
     
@@ -117,10 +121,14 @@ def update_autograding_source_repo(base_folder, enumber):
             raise ValueError("%s directory contains something else than the source files of Exercise-%s. Please check and ensure that the directory contains valid materials.\nRemote: %s" % (exercise_dir, enumber, repo.remotes.origin.url))
     # If not clone it
     else:
-        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s%s" % (enumber, autograding_suffix)), repo_path=exercise_dir)
+        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s%s" % (enumber, autograding_suffix)), repo_path=exercise_dir, token=token)
         
 def update_autograding_release_repo(base_folder, enumber):
     """Clones / pulls the autograding release files"""
+
+    # Get token
+    token = get_token()
+
     # Create the folder for released Exercises
     release_dir, exercise_dir = create_release_exercise_folder(base_folder, enumber)
     print("Updating Exercise release files ..")
@@ -142,13 +150,13 @@ def update_autograding_release_repo(base_folder, enumber):
                 shutil.rmtree(exercise_dir)
                 
                 # Update with the release version of the Exercise
-                git_clone(generate_github_remote(organization, "Exercise-%s" % (enumber)), exercise_dir)
+                git_clone(generate_github_remote(organization, "Exercise-%s" % (enumber)), exercise_dir, token=token)
                 
             else:
                 raise ValueError("%s directory contains something else than the release files of Exercise-%s. Please check and ensure that the directory contains valid materials." % (exercise_dir, enumber))
     # If not clone it
     else:
-        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s" % (enumber)), repo_path=exercise_dir)
+        git_clone(github_remote=generate_github_remote(organization, "Exercise-%s" % (enumber)), repo_path=exercise_dir, token=token)
 
 
 def create_source_exercise_folder(base_f, exercise_num):
@@ -199,9 +207,17 @@ def remove_normal_directory(folder_path):
     if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
 
-def git_clone(github_remote, repo_path):
+def get_token():
+    """Gets secure GitHub token for committing"""
+    token = os.environ['GH_TOKEN']
+    return token
+
+def git_clone(github_remote, repo_path, token):
     """Clones remote repository to path"""
     # Clone remote
+    orig_remote = github_remote[8:]
+    if token != None:
+        github_remote = 'https://'+token+'@'+orig_remote
     print("Cloning repository '%s'" % github_remote)
     try:
         Repo.clone_from(github_remote, repo_path)

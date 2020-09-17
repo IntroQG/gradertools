@@ -16,18 +16,19 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 import logging
 logging.basicConfig(level=logging.INFO)
 
-def get_token():
-    """Gets secure GitHub token for committing"""
-    token = os.environ['GH_TOKEN']
-    return token
+#def get_token():
+#    """Gets secure GitHub token for committing"""
+#    token = os.environ['GH_TOKEN']
+#    return token
 
 def git_push(repo_path, commit_msg, files=["README.md"], token=None):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)
-        orig_remote = repo.remotes[0].url[8:]
+        #orig_remote = repo.remotes[0].url[8:]
+        orig_remote = repo.remotes[0].url
         new_remote = 'https://'+token+'@'+orig_remote
-        remote = repo.create_remote('autograde', url=new_remote)
+        remote = repo.create_remote('autograde', url=orig_remote)
         repo.index.add(files)
         repo.index.commit(commit_msg)
         autograde = repo.remote(name='autograde')

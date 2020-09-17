@@ -15,7 +15,7 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 
 def get_token():
     """Gets secure GitHub token for committing"""
-    token = os.environ['GITHUB_TOKEN']
+    token = os.environ['GH_TOKEN']
     return token
 
 def git_push(repo_path, commit_msg, files=["README.md"], token=None):

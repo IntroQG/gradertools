@@ -103,6 +103,9 @@ def is_student_classroom(repo, user, exercise):
 def update_course_repo(student_folder, organization, user=None, exercise=None):
     """Update course repository from GitHub"""
     
+    # Get token
+    token = get_token()
+
     # Directory name locally
     directory_path = os.path.join(student_folder, "Exercise-%s" % exercise)
     
@@ -147,7 +150,7 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
         github_remote = generate_github_remote(organization, repo_name)
         
         # If cloning it should be done on the parent folder of the 'repo_path'
-        was_found = git_clone(github_remote, repo_path)
+        was_found = git_clone(github_remote, repo_path, token)
         
         # If the student has not started the assignment the repo path does not exist
         if was_found is False:

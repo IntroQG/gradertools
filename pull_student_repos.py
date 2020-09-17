@@ -51,9 +51,6 @@ def pull_repo(repo, github_remote):
     try:
         # Create remote connection to GitHub
         origin = create_remote(repo, github_remote)
-        print('*** REMOTE ***')
-        print(origin)
-        print('*** REMOTE ***')
         assert origin.exists()
 
         # Fetch the repo from GitHub
@@ -122,10 +119,6 @@ def update_course_repo(student_folder, organization, user=None, exercise=None):
         
         # Get the repo
         repo = Repo(repo_path)
-        print('*** REPO ***')
-        print(repo)
-        print('*** REPO ***')
-
         
         # Check if the repo is correct student Classroom
         if user is not None:
@@ -201,9 +194,16 @@ def remove_normal_directory(folder_path):
     if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
 
+def get_token():
+    """Gets secure GitHub token for committing"""
+    token = os.environ['GH_TOKEN']
+    return token
+
 def git_clone(github_remote, repo_path):
     """Clones remote repository to path"""
     # Clone remote
+    orig_remote = github_remote
+    github_remote = 'https://'+token+'@'+orig_remote
     print("Cloning repository '%s'" % github_remote)
     try:
         Repo.clone_from(github_remote, repo_path)

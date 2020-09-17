@@ -42,6 +42,9 @@ def create_remote(repo, github_remote_url):
     """Creates a remote to specified url."""
     try:
         origin = repo.create_remote('origin', github_remote_url)
+        print('*** REMOTE ***')
+        print(origin)
+        print('*** REMOTE ***')
         return origin
     except:
         return repo.remotes.origin

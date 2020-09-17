@@ -199,7 +199,7 @@ def get_token():
     token = os.environ['GH_TOKEN']
     return token
 
-def git_clone(github_remote, repo_path):
+def git_clone(github_remote, repo_path, token=None):
     """Clones remote repository to path"""
     # Clone remote
     orig_remote = github_remote
@@ -272,6 +272,9 @@ def log_missing_repos(exercise_number, username):
 
 def main():
     
+    # Get token
+    token = get_token()
+
     # Iterate over exercises if they are defined
     if len(exercise_list) > 0:
     
@@ -327,7 +330,7 @@ def main():
             repo_path = os.path.join(student_f, repo_name)
             
             # CLone repository
-            git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name))
+            git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name), token=token)
         
         print("Successfully gathered repositories for: %s" % uname)
         
@@ -348,7 +351,7 @@ def main():
             repo_path = os.path.join(student_f, repo_name)
             
             # CLone repository
-            git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name))
+            git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name), token=token)
         
     
 if __name__ == '__main__':

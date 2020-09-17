@@ -12,10 +12,6 @@ from git import Repo
 import os
 from graderconfig.tools_conf import base_folder, user_names, exercise_list
 
-# DEBUG
-import logging
-logging.basicConfig(level=logging.INFO)
-
 def git_push(repo_path, commit_msg, files=["README.md"]):
     """ add, commit and push listed files """
     try:

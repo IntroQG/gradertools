@@ -18,7 +18,7 @@ def get_token():
     token = os.environ['GH_TOKEN']
     return token
 
-def git_push(repo_path, commit_msg, files=["README.md"], token=None):
+def git_push(repo_path, commit_msg, files=["README.md"], token=token):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)

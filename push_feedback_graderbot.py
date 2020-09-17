@@ -16,19 +16,12 @@ from graderconfig.tools_conf import base_folder, user_names, exercise_list
 import logging
 logging.basicConfig(level=logging.INFO)
 
-#def get_token():
-#    """Gets secure GitHub token for committing"""
-#    token = os.environ['GH_TOKEN']
-#    return token
-
-def git_push(repo_path, commit_msg, files=["README.md"], token=None):
+def git_push(repo_path, commit_msg, files=["README.md"]):
     """ add, commit and push listed files """
     try:
         repo = Repo(repo_path)
-        #orig_remote = repo.remotes[0].url[8:]
-        orig_remote = repo.remotes[0].url
-        #new_remote = 'https://'+token+'@'+orig_remote
-        remote = repo.create_remote('autograde', url=orig_remote)
+        git_remote = repo.remotes[0].url
+        remote = repo.create_remote('autograde', url=git_remote)
         repo.index.add(files)
         repo.index.commit(commit_msg)
         autograde = repo.remote(name='autograde')
@@ -40,9 +33,6 @@ def main():
 
     # Define submitted -folder path
     submitted_f = os.path.join(base_folder, "submitted")
-
-    # Get token
-    #token = get_token()
 
     # Iterate over exercises if they are defined
     if len(exercise_list) > 0:
@@ -61,7 +51,7 @@ def main():
                 exercise_repo_path = os.path.join(submitted_f, user, "Exercise-%s" % exercise_number)
 
                 # Push listed files
-                git_push(exercise_repo_path, commit_msg, files=["README.md"], token=None)
+                git_push(exercise_repo_path, commit_msg, files=["README.md"])
 
 
 if __name__ == '__main__':

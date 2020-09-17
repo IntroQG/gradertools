@@ -12,6 +12,10 @@ from git import Repo
 import os
 from graderconfig.tools_conf import base_folder, user_names, exercise_list
 
+# DEBUG
+import logging
+logging.basicConfig()
+logging.root.setLogLevel(logging.INFO)
 
 def get_token():
     """Gets secure GitHub token for committing"""

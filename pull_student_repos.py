@@ -199,7 +199,7 @@ def remove_normal_directory(folder_path):
 
 def get_token():
     """Gets secure GitHub token for committing"""
-    token = os.environ['GH_TOKEN']
+    token = os.getenv['GH_TOKEN']
     return token
 
 def git_clone(github_remote, repo_path, token=None):

@@ -31,6 +31,7 @@ def read_html(path, exercise, name):
 	scores = [line.decode('ISO-8859-1') for line in feedbackhtml \
 		if (('(Score:' in line.decode('ISO-8859-1')) & \
 			('problem_' in line.decode('ISO-8859-1')))]
+	scores.sort()
 
 	# Check whether it's able to fetch scores from html feedback
 	read_next = True

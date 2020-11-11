@@ -323,20 +323,22 @@ def main():
             
             # Create submitted folder if it does not exist
             submitted_f = create_submitted_folder(base_folder)
+
+            for uname in user_names:
             
-            # Parse user directory and create it if it does not exist
-            student_f = create_student_folder(submitted_f, uname)
-            
-            # Repository name
-            repo_name = "%s-%s" % (add, uname)
-            
-            # Local Git Repository
-            repo_path = os.path.join(student_f, repo_name)
-            
-            # CLone repository
-            git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name), token=token)
-        
-        print("Successfully gathered repositories for: %s" % uname)
+                # Parse user directory and create it if it does not exist
+                student_f = create_student_folder(submitted_f, uname)
+
+                # Repository name
+                repo_name = "%s-%s" % (add, uname)
+
+                # Local Git Repository
+                repo_path = os.path.join(student_f, repo_name)
+
+                # CLone repository
+                git_clone(repo_path=repo_path, github_remote=generate_github_remote(organization=organization, repository_name=repo_name), token=token)
+
+                print("Successfully gathered repositories for: %s" % uname)
         
     # Iterate over any other Github repos if they are defined and pull them under the base_f 
     if len(extra_repos) > 0:

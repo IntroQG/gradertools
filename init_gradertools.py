@@ -46,11 +46,12 @@ try:
     print("GitPython installed: [ok]")
 except:
     failed_tests.append("Gitpython Python package is not installed. You need to install it first:\n\nconda install -c conda-forge gitpython ")
-try:
-    import slackclient
-    print("Slackclient installed: [ok]")
-except:
-    failed_tests.append("slackclient Python package is not installed. You need to install it first:\n\nconda install -c conda-forge slackclient")
+# Comment this out for now, since the graderbot does not use the slackclient
+#try:
+#    import slackclient
+#    print("Slackclient installed: [ok]")
+#except:
+#    failed_tests.append("slackclient Python package is not installed. You need to install it first:\n\nconda install -c conda-forge slackclient")
 try:
     import jinja2
     print("Jinja2 installed: [ok]")

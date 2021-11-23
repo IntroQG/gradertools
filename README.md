@@ -3,7 +3,7 @@
 This repository contains a few scripts that helps to manage the Geo-Python and IntroQG Exercises.
 This is a simplified version of the original gradertools developed by Henkka: https://github.com/geo-python/gradertools 
 
-what is different compared with the original tool:
+What is different compared with the original tool:
 - folder structure (less subfolders)
 - separate steps for pulling student repo and fetching exercise templates
 - no printing to pdf or sending feedback via slack.

@@ -59,13 +59,10 @@ def get_project_root_path():
 inspector_user_name = 'GRADER_NAME_GOES_HERE'
 
 # Organization
-organization = "Geo-Python-2021"
+organization = "IntroQG-2021"
 
 # Suffix for source repository for autograded Exercises
 autograding_suffix = "-autograding"
-
-
-
 
 # Generate list of usernames:
 # Uncomment lines below to directly list student names

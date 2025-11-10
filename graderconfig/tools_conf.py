@@ -59,7 +59,7 @@ def get_project_root_path():
 inspector_user_name = 'GRADER_NAME_GOES_HERE'
 
 # Organization
-organization = "IntroQG-2023"
+organization = "IntroQG-2025"
 
 # Suffix for source repository for autograded Exercises
 autograding_suffix = "-autograding"
